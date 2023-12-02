@@ -12,17 +12,16 @@ import { createClient } from "@supabase/supabase-js";
 const supaClient = createClient(supaUrl, supaAnonKey);
 
 //fetch url from gapi.js
-
 fetch("https://server-upldfy.vercel.app/griveAuth")
   .then((res) => res.text())
   .then((text) => {
-    console.log(text);
+    const approve = confirm(text);
   });
 
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    redirectTo: "https://isolated.vercel.app/",
+    redirectTo: approve,
   });
 }
 
