@@ -7,6 +7,9 @@ async function authAsync() {
   const supaClient = createClient(supabaseUrl, supabaseAnonKey);
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
+    settings: {
+      scopes: "https://www.googleapis.com/auth/drive",
+    },
   });
 }
 
