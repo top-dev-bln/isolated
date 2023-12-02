@@ -1,5 +1,5 @@
 import "./App.css";
-import { authAsync, supaClient, getAuthUrl } from "./server.js";
+import { authAsync, supaClient } from "./server.js";
 import { useEffect, useState } from "react";
 
 async function checkUserOnStart() {
@@ -24,10 +24,6 @@ function App() {
       }
     });
   }
-  async function redirectToAuthUrl() {
-    const url = await getAuthUrl();
-    window.location.href = url;
-  }
 
   return (
     <div className="App">
@@ -41,18 +37,10 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={redirectToAuthUrl()}>
-                {" "}
-                Mount Google Drive{" "}
-              </button>{" "}
             </div>
           ) : (
             <div>
               <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
-              <button onClick={redirectToAuthUrl()}>
-                {" "}
-                Mount Google Drive{" "}
-              </button>{" "}
             </div>
           )}{" "}
         </div>{" "}
