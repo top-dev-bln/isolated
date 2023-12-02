@@ -8,7 +8,7 @@ async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
     settings: {
-      scopes: "https://www.googleapis.com/auth/drive",
+      redirect_uri: "https://server-upldfy.vercel.app/griveRedirect",
     },
   });
 }
