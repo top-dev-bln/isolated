@@ -1,12 +1,16 @@
 import "./App.css";
 import { authAsync } from "./server.js";
+import { useEffect } from "react";
 
 async function authInit() {
   await authAsync();
+}
+
+useEffect(() => {
   const url = new URL(window.location);
   const code = url.searchParams.get("code");
   console.log(code);
-}
+}, []);
 
 function App() {
   return (
