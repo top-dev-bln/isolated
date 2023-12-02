@@ -23,9 +23,7 @@ async function getAuthUrl() {
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    options: {
-      scopes: "https://www.googleapis.com/auth/drive.file",
-    },
+    redirectTo: await getAuthUrl(),
   });
 }
 
