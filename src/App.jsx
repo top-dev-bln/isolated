@@ -1,5 +1,5 @@
 import "./App.css";
-import { authAsync, supaClient } from "./isolated/server/index.js";
+import { authAsync, supaClient } from "./server.js";
 import { useEffect, useState } from "react";
 
 async function checkUserOnStart() {
