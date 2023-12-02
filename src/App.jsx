@@ -1,5 +1,5 @@
 import "./App.css";
-import { authAsync, supaClient, getGurl } from "./server.js";
+import { authAsync, supaClient } from "./server.js";
 import { useEffect, useState } from "react";
 
 async function checkUserOnStart() {
@@ -39,7 +39,10 @@ function App() {
               </button>{" "}
             </div>
           ) : (
-            <button onClick={() => authAsync()}> Sign In with Google </button>
+            <div className="centered-content">
+              <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
+              <button> Gdrive Mount </button>{" "}
+            </div>
           )}{" "}
         </div>{" "}
       </header>{" "}

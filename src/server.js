@@ -14,21 +14,21 @@ const supaClient = createClient(supaUrl, supaAnonKey);
 
 //fetch url from gapi.js
 
-function getGurl() {
-  var url = "";
-  fetch("https://server-upldfy.vercel.app/griveAuth")
-    .then((res) => res.text())
-    .then((text) => {
-      console.log(text);
-      url = text;
-    });
-  return url;
-}
+/*
+ var approve = "";
+ fetch("https://server-upldfy.vercel.app/griveAuth")
+   .then((res) => res.text())
+   .then((text) => {
+     console.log(text);
+     alert(text);
+     var approve = text;
+   });*/
 
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
+    redirectTo: window.location.origin,
   });
 }
 
-export { authAsync, supaClient, getGurl };
+export { authAsync, supaClient };
