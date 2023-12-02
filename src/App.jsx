@@ -37,12 +37,28 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
+              <button // go to "griveRedirect" endpoint
+                onClick={() => {
+                  window.location.href =
+                    "https://server-upldfy.vercel.app/griveRedirect";
+                }}
+              >
+                Grive ?
+              </button>{" "}
             </div>
           ) : (
             <div>
               <button onClick={() => authAsync()}>
                 {" "}
                 Sign In with Google + grive probabil{" "}
+              </button>{" "}
+              <button // go to "griveRedirect" endpoint
+                onClick={() => {
+                  window.location.href =
+                    "https://server-upldfy.vercel.app/griveRedirect";
+                }}
+              >
+                Grive ?
               </button>{" "}
             </div>
           )}{" "}
