@@ -22,7 +22,6 @@ fetch("https://server-upldfy.vercel.app/griveAuth")
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    redirectTo: window.location.origin,
   });
 }
 

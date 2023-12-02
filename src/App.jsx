@@ -10,7 +10,6 @@ async function checkUserOnStart() {
 
 function InitUser() {
   authAsync();
-  // Gmount();
   checkUserOnStart();
 }
 
