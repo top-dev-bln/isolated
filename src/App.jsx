@@ -8,11 +8,6 @@ async function checkUserOnStart() {
   });
 }
 
-function InitUser() {
-  authAsync();
-  checkUserOnStart();
-}
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
@@ -44,7 +39,7 @@ function App() {
               </button>{" "}
             </div>
           ) : (
-            <button onClick={() => InitUser()}> Sign In with Google </button>
+            <button onClick={() => authAsync()}> Sign In with Google </button>
           )}{" "}
         </div>{" "}
       </header>{" "}

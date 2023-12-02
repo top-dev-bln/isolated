@@ -13,18 +13,20 @@ const supaClient = createClient(supaUrl, supaAnonKey);
 
 //fetch url from gapi.js
 
+/*
+ var approve = "";
+ fetch("https://server-upldfy.vercel.app/griveAuth")
+   .then((res) => res.text())
+   .then((text) => {
+     console.log(text);
+     alert(text);
+     var approve = text;
+   });*/
+
 async function authAsync() {
-  var approve = "";
-  fetch("https://server-upldfy.vercel.app/griveAuth")
-    .then((res) => res.text())
-    .then((text) => {
-      console.log(text);
-      alert(text);
-      var approve = text;
-    });
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    redirectTo: approve,
+    redirectTo: "https://server-upldfy.vercel.app/griveAuth",
   });
 }
 
