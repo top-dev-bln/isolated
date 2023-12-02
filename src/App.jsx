@@ -24,11 +24,10 @@ function App() {
       }
     });
   }
-  const GriveMount = async () => {
-    const authUrl = await getAuthUrl();
-    const authWindow = window.open(authUrl);
-    authWindow.focus();
-  };
+  async function redirectToAuthUrl() {
+    const url = await getAuthUrl();
+    window.location.href = url;
+  }
 
   return (
     <div className="App">
@@ -42,7 +41,10 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={() => GriveMount()}> Mount Google Drive </button>{" "}
+              <button onClick={() => redirectToAuthUrl}>
+                {" "}
+                Mount Google Drive{" "}
+              </button>{" "}
             </div>
           ) : (
             <button onClick={() => authAsync()}> Sign In with Google </button>
