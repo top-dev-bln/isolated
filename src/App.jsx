@@ -41,13 +41,19 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={() => redirectToAuthUrl}>
+              <button onClick={redirectToAuthUrl()}>
                 {" "}
                 Mount Google Drive{" "}
               </button>{" "}
             </div>
           ) : (
-            <button onClick={() => authAsync()}> Sign In with Google </button>
+            <div>
+              <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
+              <button onClick={redirectToAuthUrl()}>
+                {" "}
+                Mount Google Drive{" "}
+              </button>{" "}
+            </div>
           )}{" "}
         </div>{" "}
       </header>{" "}
