@@ -11,22 +11,19 @@ const supaAnonKey =
 import { createClient } from "@supabase/supabase-js";
 const supaClient = createClient(supaUrl, supaAnonKey);
 
-//fetch url from gapi.js
-
-/*
- var approve = "";
- fetch("https://server-upldfy.vercel.app/griveAuth")
-   .then((res) => res.text())
-   .then((text) => {
-     console.log(text);
-     alert(text);
-     var approve = text;
-   });*/
+async function getAuthUrl() {
+  return fetch("https://server-upldfy.vercel.app/griveAuth")
+    .then((res) => res.text())
+    .then((text) => {
+      console.log(text);
+      return text;
+    });
+}
 
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    redirectTo: "https://server-upldfy.vercel.app/griveAuth",
+    redirectTo: window.location.origin,
   });
 }
 

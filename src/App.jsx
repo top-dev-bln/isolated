@@ -37,9 +37,13 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
+              <button> Sign In with Google </button>{" "}
             </div>
           ) : (
-            <button onClick={() => authAsync()}> Sign In with Google </button>
+            <div className="centered-content">
+              <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
+              <button> Grive Mount </button>{" "}
+            </div>
           )}{" "}
         </div>{" "}
       </header>{" "}
