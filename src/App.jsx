@@ -39,10 +39,7 @@ function App() {
               </button>{" "}
             </div>
           ) : (
-            <div className="centered-content">
-              <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
-              <button> Gdrive Mount </button>{" "}
-            </div>
+            <button onClick={() => authAsync()}> Sign In with Google </button>
           )}{" "}
         </div>{" "}
       </header>{" "}
