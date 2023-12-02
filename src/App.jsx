@@ -37,7 +37,6 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button> Gdrive Mount </button>{" "}
             </div>
           ) : (
             <button onClick={() => authAsync()}> Sign In with Google </button>
