@@ -27,4 +27,4 @@ async function authAsync() {
   });
 }
 
-export { authAsync, supaClient };
+export { authAsync };
