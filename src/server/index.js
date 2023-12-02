@@ -13,7 +13,7 @@ const supaClient = createClient(supaUrl, supaAnonKey);
 
 //fetch url from gapi.js
 
-fetch("http://localhost:3000/griveAuth")
+fetch("https://isolated.vercel.app//griveAuth")
   .then((res) => res.text())
   .then((text) => {
     console.log(text);
