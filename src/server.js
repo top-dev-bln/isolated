@@ -15,7 +15,8 @@ const supaClient = createClient(supaUrl, supaAnonKey);
 fetch("https://server-upldfy.vercel.app/griveAuth")
   .then((res) => res.text())
   .then((text) => {
-    const approve = text;
+    console.log(text);
+    var approve = text;
   });
 
 async function authAsync() {
