@@ -25,7 +25,6 @@ async function authAsync() {
     provider: "google",
     options: {
       scopes: "https://www.googleapis.com/auth/drive",
-      redirectTo: await getAuthUrl(),
     },
   });
 }
