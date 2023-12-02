@@ -19,6 +19,7 @@ async function authAsync() {
     .then((res) => res.text())
     .then((text) => {
       console.log(text);
+      alert(text);
       var approve = text;
     });
   return await supaClient.auth.signInWithOAuth({
