@@ -23,7 +23,7 @@ async function getAuthUrl() {
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo: await getAuthUrl() },
+    //options: { redirectTo: await getAuthUrl() },
   });
 }
 
