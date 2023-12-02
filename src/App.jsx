@@ -1,5 +1,5 @@
 import "./App.css";
-import { authAsync, supaClient } from "./server.js";
+import { authAsync, supaClient, getAuthUrl } from "./server.js";
 import { useEffect, useState } from "react";
 
 async function checkUserOnStart() {
@@ -37,13 +37,12 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button> Sign In with Google </button>{" "}
+              <a href={getAuthUrl()}>
+                <button> Grive Mount </button>{" "}
+              </a>{" "}
             </div>
           ) : (
-            <div className="centered-content">
-              <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
-              <button> Grive Mount </button>{" "}
-            </div>
+            <button onClick={() => authAsync()}> Sign In with Google </button>
           )}{" "}
         </div>{" "}
       </header>{" "}
