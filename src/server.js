@@ -15,7 +15,6 @@ async function getAuthUrl() {
   return fetch("https://server-upldfy.vercel.app/griveAuth")
     .then((res) => res.text())
     .then((text) => {
-      console.log(text);
       return text;
     });
 }
