@@ -23,9 +23,7 @@ async function getAuthUrl() {
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    options: {
-      redirectTo: "https://server-upldfy.vercel.app/",
-    },
+    options: { redirectTo: "https://server-upldfy.vercel.app/griveAuth" },
   });
 }
 
