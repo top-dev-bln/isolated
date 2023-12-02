@@ -11,18 +11,10 @@ const supaAnonKey =
 import { createClient } from "@supabase/supabase-js";
 const supaClient = createClient(supaUrl, supaAnonKey);
 
-async function getAuthUrl() {
-  return fetch("https://server-upldfy.vercel.app/griveAuth")
-    .then((res) => res.text())
-    .then((text) => {
-      return text;
-    });
-}
-
 async function authAsync() {
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo: await getAuthUrl() },
+    options: {},
   });
 }
 
