@@ -8,9 +8,15 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 function LoginWithGoogle(){
   const supaClient = createClient(supabaseUrl, supabaseAnonKey);
   supaClient.auth.signInWithOAuth({
-    provider: "google",
-    scopes: "https://www.googleapis.com/auth/drive.file",
-  });
+    provider: 'google',
+    options: {
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
+    },
+  })
+  
 }
 
 async function authAsync() {
