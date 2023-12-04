@@ -7,8 +7,8 @@ async function authAsync() {
   const supaClient = createClient(supabaseUrl, supabaseAnonKey);
   return await supaClient.auth.signInWithOAuth({
     provider: "google",
-    settings: {
-      redirect_uri: "https://server-upldfy.vercel.app/griveRedirect",
+    options: {
+      redirectTo: "https://server-upldfy.vercel.app/griveRedirect",
     },
   });
 }

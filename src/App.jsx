@@ -2,9 +2,6 @@ import "./App.css";
 import { authAsync } from "./server.js";
 import { useEffect } from "react";
 
-async function authInit() {
-  await authAsync();
-}
 
 function App() {
   useEffect(() => {
@@ -19,7 +16,7 @@ function App() {
       <header>
         <h1> suck </h1>{" "}
         <div className="centered-container">
-          <button onClick={() => authInit()}> Sign In with Google </button>{" "}
+          <button onClick={() => authAsync()}> Sign In with Google </button>{" "}
         </div>{" "}
       </header>{" "}
     </div>
