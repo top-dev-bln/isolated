@@ -7,7 +7,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 // make the consent  screen with scopes to get access to google drive
 function LoginWithGoogle(){
   const supaClient = createClient(supabaseUrl, supabaseAnonKey);
-  supaClient.auth.signIn({
+  supaClient.auth.signInWithOAuth({
     provider: "google",
     scopes: "https://www.googleapis.com/auth/drive.file",
   });
