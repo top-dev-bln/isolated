@@ -5,19 +5,7 @@ import { useEffect } from "react";
 //codetotoken but also send the google id thingy so i can store the code in users db
 //then i can use the code to get the token and then use the token to get the user id
 function codeToToken(code) {
-  fetch("http://server-upldfy.vercel.app/auth", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ code: code }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      localStorage.setItem("token", data.token);
-      window.location = "/";
-    });
+  console.log(code);
 }
 
 function App() {
