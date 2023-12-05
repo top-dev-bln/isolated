@@ -31,13 +31,14 @@ function checkLoggedIn() {
 }
 
 function codeToToken(code, userID) {
+  console.log("code to token");
+  console.log("am fost apelat cu codul " + code + " si userID " + userID);
   fetch("https://server-upldfy.vercel.app/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ code, userID }),
-    mode: "no-cors",
   })
     .then((res) => res.text())
     .then((data) => {
