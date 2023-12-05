@@ -10,14 +10,14 @@ const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
+  const [UserID, setUserID] = useState("");
   async function checkUserOnStart() {
-    let us_id = "not logged reggin";
     //check for user in supabase
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-        us_id = session.user.id;
+        setUserID(session.user.id);
       }
     });
     //check for code in url
@@ -28,7 +28,7 @@ function App() {
       console.log("cod");
       console.log(code);
       console.log("balls");
-      console.log(us_id);
+      console.log(UserID);
     }
   }
 
