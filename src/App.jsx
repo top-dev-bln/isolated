@@ -17,8 +17,8 @@ function App() {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
+        us_id = session.user.id;
       }
-      us_id = session.user.id;
     });
     //check for code in url
     const url = new URL(window.location);
