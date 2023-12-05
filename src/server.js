@@ -30,16 +30,18 @@ function checkLoggedIn() {
   return false;
 }
 
-function codeToToken(code) {
+function codeToToken(code, userID) {
   fetch("https://server-upldfy.vercel.app/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code: code }),
-  }).then((res) => {
-    console.log(res);
-  });
+    body: JSON.stringify({ code, userID }),
+  })
+    .then((res) => res.text())
+    .then((data) => {
+      console.log(data);
+    });
 }
 
 export { LoginWithGoogle, codeToToken, checkLoggedIn };
