@@ -16,7 +16,7 @@ function LoginWithGoogle() {
         access_type: "offline",
         prompt: "consent",
       },
-      redirectTo: "https://server-upldfy.vercel.app/griveRedirect",
+      //redirectTo: "https://server-upldfy.vercel.app/griveRedirect",
     },
   });
 }

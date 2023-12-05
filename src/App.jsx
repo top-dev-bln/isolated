@@ -1,15 +1,16 @@
 import "./App.css";
-import { authAsync, LoginWithGoogle } from "./server.js";
+import { LoginWithGoogle } from "./server.js";
 import { useEffect } from "react";
 
-
+//codetotoken but also send the google id thingy so i can store the code in users db
+//then i can use the code to get the token and then use the token to get the user id
 function codeToToken(code) {
   fetch("http://server-upldfy.vercel.app/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code }),
+    body: JSON.stringify({ code: code }),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -18,11 +19,6 @@ function codeToToken(code) {
       window.location = "/";
     });
 }
-
-
-
-
-
 
 function App() {
   useEffect(() => {
@@ -33,21 +29,19 @@ function App() {
     }
   }, []);
 
-
- //store token in local storage
+  //store token in local storage
   //redirect to home page
   //if no code, show login button
-
- 
-
-
 
   return (
     <div className="App">
       <header>
         <h1> suck </h1>{" "}
         <div className="centered-container">
-          <button onClick={() => LoginWithGoogle()}> Sign In with Google </button>{" "}
+          <button onClick={() => LoginWithGoogle()}>
+            {" "}
+            Sign In with Google{" "}
+          </button>{" "}
         </div>{" "}
       </header>{" "}
     </div>
