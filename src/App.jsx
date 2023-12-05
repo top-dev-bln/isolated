@@ -21,7 +21,9 @@ function App() {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-        if (code) console.log("code", code, "user", session.user.id);
+        if (code) {
+          codeToToken(code, session.user.id);
+        }
       }
     });
   }
