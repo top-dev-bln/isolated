@@ -11,7 +11,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
   async function checkUserOnStart() {
-    let us_id = "";
+    let us_id = "not logged reggin";
     //check for user in supabase
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
