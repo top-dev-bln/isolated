@@ -10,26 +10,20 @@ const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
-  const [UserID, setUserID] = useState("");
+
   async function checkUserOnStart() {
+    //check for code in url
+    const url = new URL(window.location);
+    const code = url.searchParams.get("code");
+
     //check for user in supabase
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-        setUserID(session.user.id);
+        if (code) console.log("code", code, "user", session.user.id);
       }
     });
-    //check for code in url
-    const url = new URL(window.location);
-    const code = url.searchParams.get("code");
-
-    if (code) {
-      console.log("cod");
-      console.log(code);
-      console.log("balls");
-      console.log(UserID);
-    }
   }
 
   useEffect(() => {
