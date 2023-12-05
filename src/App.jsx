@@ -23,6 +23,9 @@ function App() {
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
       }
+      console.log("Gay Sex");
+      console.log("event", event);
+      console.log("session", session);
     });
   }
 
