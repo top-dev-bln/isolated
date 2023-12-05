@@ -12,11 +12,7 @@ function App() {
   const [avatarUrl, setAvatarUrl] = useState("");
   async function checkUserOnStart() {
     //check for code in url
-    const url = new URL(window.location);
-    const code = url.searchParams.get("code");
-    if (code) {
-      codeToToken(code);
-    }
+
     //check for user in supabase
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
@@ -26,7 +22,17 @@ function App() {
       console.log("Gay Sex");
       console.log("event", event);
       console.log("session", session);
+      console.log("Gay Sex code");
+      console.log(session.access_token);
     });
+
+    const url = new URL(window.location);
+    const code = url.searchParams.get("code");
+
+    if (code) {
+      console.log("codu iubitor de barbati");
+      console.log(code);
+    }
   }
 
   useEffect(() => {
