@@ -21,12 +21,25 @@ function LoginWithGoogle() {
   });
 }
 
-async function authAsync() {
+function checkLoggedIn() {
   const supaClient = createClient(supabaseUrl, supabaseAnonKey);
-  return await supaClient.auth.signInWithOAuth({
-    provider: "google",
-    options: { redirectTo: "https://server-upldfy.vercel.app/griveRedirect" },
+  const user = supaClient.auth.user();
+  if (user) {
+    return true;
+  }
+  return false;
+}
+
+function codeToToken(code) {
+  fetch("https://server-upldfy.vercel.app/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ code: code }),
+  }).then((res) => {
+    console.log(res);
   });
 }
 
-export { authAsync, LoginWithGoogle };
+export { LoginWithGoogle, codeToToken, checkLoggedIn };

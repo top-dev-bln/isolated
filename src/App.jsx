@@ -1,35 +1,54 @@
 import "./App.css";
-import { LoginWithGoogle } from "./server.js";
-import { useEffect } from "react";
+import { LoginWithGoogle, codeToToken } from "./server.js";
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 
-//codetotoken but also send the google id thingy so i can store the code in users db
-//then i can use the code to get the token and then use the token to get the user id
-function codeToToken(code) {
-  console.log(code);
-}
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 
 function App() {
-  useEffect(() => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState("");
+  async function checkUserOnStart() {
+    //check for code in url
     const url = new URL(window.location);
     const code = url.searchParams.get("code");
     if (code) {
       codeToToken(code);
     }
-  }, []);
+    //check for user in supabase
+    await supaClient.auth.onAuthStateChange((event, session) => {
+      setIsAuthenticated(!!session);
+      if (session) {
+        setAvatarUrl(session.user.user_metadata.avatar_url);
+      }
+    });
+  }
 
-  //store token in local storage
-  //redirect to home page
-  //if no code, show login button
+  useEffect(() => {
+    checkUserOnStart();
+  }, []);
 
   return (
     <div className="App">
       <header>
         <h1> suck </h1>{" "}
         <div className="centered-container">
-          <button onClick={() => LoginWithGoogle()}>
-            {" "}
-            Sign In with Google{" "}
-          </button>{" "}
+          {" "}
+          {isAuthenticated ? (
+            <div className="centered-content">
+              <img src={avatarUrl} alt="User Avatar" />
+              <button onClick={() => supaClient.auth.signOut()}>
+                Sign Out{" "}
+              </button>{" "}
+            </div>
+          ) : (
+            <button onClick={() => LoginWithGoogle()}>
+              {" "}
+              Sign In with Google{" "}
+            </button>
+          )}{" "}
         </div>{" "}
       </header>{" "}
     </div>
