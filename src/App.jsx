@@ -23,6 +23,7 @@ function App() {
         if (true) {//event === "INITIAL_SESSION"
           setAvatarUrl(session.user.user_metadata.avatar_url);
           if (code) {
+            console.log(JSON.stringify({ code, userID }));
             codeToToken(code, session.user.id);
           }
         }
