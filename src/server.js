@@ -20,19 +20,22 @@ function LoginWithGoogle() {
 
 function codeToToken(code, userID) {
   console.log("ma bag la creatie cu codul " + code + " si userID " + userID);
-  console.log(JSON.stringify({ code, userID }));
+
+  //make a post requst to the server sending the code and userID
+  //the server will return the refresh token and access token
+
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ code, userID }),
-    mode: "no-cors",
   })
-    .then((res) => res.text())
+    .then((res) => res.json())
     .then((data) => {
       console.log(data);
-    });
+    })
+    .catch((err) => console.log(err));
 }
 
 export { LoginWithGoogle, codeToToken };
