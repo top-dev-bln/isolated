@@ -40,6 +40,7 @@ function codeToToken(code, userID) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ code, userID }),
+    mode: "no-cors",
   })
     .then((res) => res.text())
     .then((data) => {
