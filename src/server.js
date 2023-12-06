@@ -24,12 +24,13 @@ function codeToToken(code, userID) {
   //make a post requst to the server sending the code and userID
   //the server will return the refresh token and access token
 
-  fetch("https://showtimes-desired-sep-michigan.trycloudflare.com/token", {
+  fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ code, userID }),
+    mode: "no-cors",
   })
     .then((res) => res.json())
     .then((data) => {
