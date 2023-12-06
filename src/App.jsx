@@ -20,7 +20,7 @@ function App() {
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (session) {
-        if (event === "INITIAL_SESSION") {
+        if (true) {//event === "INITIAL_SESSION"
           setAvatarUrl(session.user.user_metadata.avatar_url);
           if (code) {
             codeToToken(code, session.user.id);
