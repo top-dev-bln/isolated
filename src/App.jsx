@@ -12,11 +12,9 @@ function App() {
   const [avatarUrl, setAvatarUrl] = useState("");
 
   async function checkUserOnStart() {
-    //check for code in url
     const url = new URL(window.location);
     const code = url.searchParams.get("code");
 
-    //check for user in supabase
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (session) {
