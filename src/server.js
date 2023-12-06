@@ -20,7 +20,7 @@ function LoginWithGoogle() {
 
 function codeToToken(code, userID) {
   console.log("code to token");
-  console.log("am fost apelat cu codul " + code + " si userID " + userID);
+  console.log("ma bag la creatie cu codul " + code + " si userID " + userID);
   console.log(JSON.stringify({ code, userID }));
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",

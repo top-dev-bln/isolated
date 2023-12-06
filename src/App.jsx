@@ -14,15 +14,12 @@ function App() {
   async function checkUserOnStart() {
     const url = new URL(window.location);
     const code = url.searchParams.get("code");
-    if (code) console.log(code);
-
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (session) {
         if (event === "INITIAL_SESSION") {
           setAvatarUrl(session.user.user_metadata.avatar_url);
           if (code) {
-            console.log(code, session.user.id);
             codeToToken(code, session.user.id);
           }
         }
