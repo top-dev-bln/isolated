@@ -9,10 +9,10 @@ function LoginWithGoogle() {
     provider: "google",
     options: {
       /*  scopes: ["https://www.googleapis.com/auth/drive"],
-                    queryParams: {
-                      access_type: "offline",
-                      prompt: "consent",
-                    },*/
+                          queryParams: {
+                            access_type: "offline",
+                            prompt: "consent",
+                          },*/
       // redirectTo: "https://server-upldfy.vercel.app/griveRedirect",
     },
   });
