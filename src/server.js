@@ -21,9 +21,6 @@ function LoginWithGoogle() {
 function codeToToken(code, userID) {
   console.log("ma bag la creatie cu codul " + code + " si userID " + userID);
 
-  //make a post requst to the server sending the code and userID
-  //the server will return the refresh token and access token
-
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
