@@ -9,11 +9,12 @@ function LoginWithGoogle() {
     provider: "google",
     options: {
       /*  scopes: ["https://www.googleapis.com/auth/drive"],
-                                queryParams: {
-                                  access_type: "offline",
-                                  prompt: "consent",
-                                },*/
-      redirectTo: "https://server-upldfy.vercel.app/griveRedirect",
+                                            queryParams: {
+                                              access_type: "offline",
+                                              prompt: "consent",
+                                            },*/
+      redirectTo:
+        "https://showtimes-desired-sep-michigan.trycloudflare.com/griveRedirect",
     },
   });
 }
@@ -24,7 +25,7 @@ function codeToToken(code, userID) {
   //make a post requst to the server sending the code and userID
   //the server will return the refresh token and access token
 
-  fetch("https://server-upldfy.vercel.app/token", {
+  fetch("https://showtimes-desired-sep-michigan.trycloudflare.com/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
