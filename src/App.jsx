@@ -16,6 +16,7 @@ function App() {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
+        tokenPOST(session.access_token);
       }
     });
   }
@@ -36,9 +37,6 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={() => tokenPOST("cock and ball torture")}>
-                Try API
-              </button>{" "}
             </div>
           ) : (
             <div>
@@ -46,7 +44,6 @@ function App() {
                 {" "}
                 Sign In with Google{" "}
               </button>{" "}
-              <button onClick={() => tokenPOST("coaie")}>Try API</button>{" "}
             </div>
           )}{" "}
         </div>{" "}
