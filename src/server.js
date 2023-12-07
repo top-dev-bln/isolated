@@ -17,12 +17,13 @@ function LoginWithGoogle() {
   });
 }
 
-function tokenPOST() {
+async function tokenPOST() {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
   const code = "aia lata de bulgar";
 
-  fetch("https://server-upldfy.vercel.app/token", {
+  //post request to server
+  await fetch("http://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
