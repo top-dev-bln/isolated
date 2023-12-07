@@ -16,7 +16,7 @@ function App() {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-        codeToToken(session.provider_token);
+        codeToToken();
       }
     });
   }

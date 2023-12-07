@@ -17,8 +17,10 @@ function LoginWithGoogle() {
   });
 }
 
-function codeToToken(code) {
-  //console.log("ma bag la creatie cu codul " + code + " si userID " + userID);
+function codeToToken() {
+  //console.log("ma bag la creatie cu codul " + code);
+  console.log("ma bag la creatie");
+  const code = "aia lata de bulgar";
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
