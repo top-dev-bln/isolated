@@ -30,11 +30,13 @@ function tokenPOST() {
     body: JSON.stringify({ code }),
     mode: "no-cors",
   })
-    .then((res) => res.json())
+    .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      console.log("Success:", data);
     })
-    .catch((err) => console.log(err));
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
 export { LoginWithGoogle, tokenPOST };
