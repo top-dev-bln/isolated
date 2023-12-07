@@ -17,6 +17,7 @@ function App() {
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
         tokenPOST(session.access_token);
+        console.log(session);
       }
     });
   }
