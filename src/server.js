@@ -8,7 +8,11 @@ function LoginWithGoogle() {
   supaClient.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "https://server-upldfy.vercel.app/griveRedirect",
+      scopes: ["https://www.googleapis.com/auth/drive"],
+      queryParams: {
+        access_type: "offline",
+        prompt: "consent",
+      },
     },
   });
 }
