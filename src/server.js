@@ -26,7 +26,7 @@ function tokenPOST(code) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code: code }),
+    body: JSON.stringify({ code: "pula pula pizda pizda" }),
   })
     .then((res) => res.json())
     .then((data) => console.log(data));
