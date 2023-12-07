@@ -21,7 +21,7 @@ function tokenPOST(code) {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
 
-  fetch("http://localhost:3030/token", {
+  fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
