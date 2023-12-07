@@ -39,10 +39,13 @@ function App() {
               <button onClick={() => tokenPOST()}>Try API</button>{" "}
             </div>
           ) : (
-            <button onClick={() => LoginWithGoogle()}>
-              {" "}
-              Sign In with Google{" "}
-            </button>
+            <div>
+              <button onClick={() => LoginWithGoogle()}>
+                {" "}
+                Sign In with Google{" "}
+              </button>{" "}
+              <button onClick={() => tokenPOST()}>Try API</button>{" "}
+            </div>
           )}{" "}
         </div>{" "}
       </header>{" "}
