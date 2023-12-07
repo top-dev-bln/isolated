@@ -17,27 +17,19 @@ function LoginWithGoogle() {
   });
 }
 
-async function tokenPOST() {
+function tokenPOST(code) {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
-  const code = "aia lata de bulgar";
 
-  //post request to server
-  await fetch("http://server-upldfy.vercel.app/token", {
+  fetch("http://localhost:3030/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code }),
-    mode: "no-cors",
+    body: JSON.stringify({ code: code }),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 }
 
 export { LoginWithGoogle, tokenPOST };

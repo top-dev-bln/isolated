@@ -44,7 +44,7 @@ function App() {
                 {" "}
                 Sign In with Google{" "}
               </button>{" "}
-              <button onClick={() => tokenPOST()}>Try API</button>{" "}
+              <button onClick={() => tokenPOST("coaie")}>Try API</button>{" "}
             </div>
           )}{" "}
         </div>{" "}
