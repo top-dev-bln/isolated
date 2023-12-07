@@ -16,8 +16,9 @@ function App() {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-        tokenPOST(session.access_token);
-        console.log(event);
+        if (event === "INITIAL_SESSION") {
+          tokenPOST(session.access_token);
+        }
       }
     });
   }
