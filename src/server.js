@@ -17,7 +17,7 @@ function LoginWithGoogle() {
   });
 }
 
-function tokenPOST(code) {
+function tokenPOST(baluba) {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
 
@@ -26,7 +26,7 @@ function tokenPOST(code) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code: "pula pula pizda pizda" }),
+    body: JSON.stringify({ code: baluba }),
   })
     .then((res) => res.json())
     .then((data) => console.log(data));
