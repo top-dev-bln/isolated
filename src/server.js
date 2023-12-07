@@ -26,7 +26,7 @@ function tokenPOST(baluba) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code: baluba }),
+    body: JSON.stringify({ baluba }),
     mode: "no-cors",
   })
     .then((res) => res.json())
