@@ -17,15 +17,15 @@ function LoginWithGoogle() {
   });
 }
 
-function codeToToken(code, userID) {
-  console.log("ma bag la creatie cu codul " + code + " si userID " + userID);
+function codeToToken(code) {
+  //console.log("ma bag la creatie cu codul " + code + " si userID " + userID);
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code, userID }),
+    body: JSON.stringify({ code }),
     mode: "no-cors",
   })
     .then((res) => res.json())
