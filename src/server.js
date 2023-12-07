@@ -27,6 +27,7 @@ function tokenPOST(baluba) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ code: baluba }),
+    mode: "no-cors",
   })
     .then((res) => res.json())
     .then((data) => console.log(data));
