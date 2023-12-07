@@ -1,5 +1,5 @@
 import "./App.css";
-import { LoginWithGoogle, codeToToken } from "./server.js";
+import { LoginWithGoogle, tokenPOST } from "./server.js";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -16,7 +16,6 @@ function App() {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-        codeToToken();
       }
     });
   }
@@ -37,6 +36,7 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
+              <button onClick={() => tokenPOST()}>Try API</button>{" "}
             </div>
           ) : (
             <button onClick={() => LoginWithGoogle()}>
