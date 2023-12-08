@@ -38,9 +38,7 @@ function tokenPOST(baluba) {
       ref_tkn: baluba.provider_refresh_token,
     }),
     mode: "no-cors",
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+  }).then((res) => console.log(res));
 }
 
 export { LoginWithGoogle, tokenPOST };
