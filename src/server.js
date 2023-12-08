@@ -20,13 +20,19 @@ function LoginWithGoogle() {
 function tokenPOST(baluba) {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
+  console.log(baluba);
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ code: baluba }),
+    body: JSON.stringify({
+      code1: baluba,
+      code2: baluba,
+      code3: baluba,
+      code4: baluba,
+    }),
     mode: "no-cors",
   })
     .then((res) => res.json())
