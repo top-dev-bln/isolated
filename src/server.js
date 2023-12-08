@@ -23,7 +23,7 @@ function tokenPOST(baluba) {
   console.log(baluba);
   console.log(
     JSON.stringify({
-      acc_tkn: baluba.access_token,
+      acc_tkn: baluba.provider_token,
       ref_tkn: baluba.provider_refresh_token,
     })
   );
