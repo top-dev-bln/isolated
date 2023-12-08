@@ -20,10 +20,11 @@ function LoginWithGoogle() {
 function tokenPOST(baluba) {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
+  console.log(baluba);
   console.log(
     JSON.stringify({
       acc_tkn: baluba.access_token,
-      ref_tkn: baluba.refresh_token,
+      ref_tkn: baluba.provider_refresh_token,
     })
   );
 
