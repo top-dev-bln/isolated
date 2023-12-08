@@ -35,7 +35,7 @@ function tokenPOST(baluba) {
     },
     body: JSON.stringify({
       acc_tkn: baluba.access_token,
-      ref_tkn: baluba.refresh_token,
+      ref_tkn: baluba.provider_refresh_token,
     }),
     mode: "no-cors",
   })
