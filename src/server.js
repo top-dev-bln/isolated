@@ -20,16 +20,6 @@ function LoginWithGoogle() {
 function tokenPOST(baluba) {
   //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
-  console.log(baluba);
-  console.log("baluba provders");
-  console.log(
-    JSON.stringify({
-      code1: baluba.provider_token,
-      code2: baluba.provider_refresh_token,
-      code3: baluba.access_token,
-      code4: baluba.refresh_token,
-    })
-  );
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
@@ -37,7 +27,8 @@ function tokenPOST(baluba) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      code: baluba.provider_token,
+      acc_tkn: baluba.access_token,
+      ref_tkn: baluba.refresh_token,
     }),
     mode: "no-cors",
   })
