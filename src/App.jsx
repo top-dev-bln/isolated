@@ -17,8 +17,7 @@ function App() {
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
         if (event === "INITIAL_SESSION") {
-          //tokenPOST(session);
-          testServer(session.access_token, session.refresh_token);
+          tokenPOST(session.access_token, session.refresh_token);
         }
       }
     });
