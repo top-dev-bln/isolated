@@ -39,12 +39,17 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
+              <button onClick={() => tokenPOST()}> test </button>{" "}
             </div>
           ) : (
             <div>
               <button onClick={() => LoginWithGoogle()}>
                 {" "}
                 Sign In with Google{" "}
+              </button>{" "}
+              <button onClick={() => tokenPOST("suji carasu", "muie")}>
+                {" "}
+                test{" "}
               </button>{" "}
             </div>
           )}{" "}
