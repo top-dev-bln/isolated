@@ -17,15 +17,15 @@ function LoginWithGoogle() {
   });
 }
 
-function testServer(acc_tkn, ref_tkn) {
+function testServer(ref_tkn, id) {
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      acc_tkn: acc_tkn,
       ref_tkn: ref_tkn,
+      id: id,
     }),
   }).then((response) => {
     response.text().then((text) => {
