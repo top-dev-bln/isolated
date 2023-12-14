@@ -1,5 +1,5 @@
 import "./App.css";
-import { LoginWithGoogle, testServer, tokenPOST } from "./server.js";
+import { LoginWithGoogle, tokenPOST } from "./server.js";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -18,7 +18,7 @@ function App() {
         setAvatarUrl(session.user.user_metadata.avatar_url);
         if (event === "INITIAL_SESSION") {
           console.log(session);
-          tokenPOST(session.refresh_token, session.id);
+          tokenPOST(session.provider_refresh_token, session.user.id);
         }
       }
     });
@@ -40,17 +40,12 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={() => testServer("sate", "fut")}> test </button>{" "}
             </div>
           ) : (
             <div>
               <button onClick={() => LoginWithGoogle()}>
                 {" "}
                 Sign In with Google{" "}
-              </button>{" "}
-              <button onClick={() => testServer("sate", "fut")}>
-                {" "}
-                test{" "}
               </button>{" "}
             </div>
           )}{" "}
