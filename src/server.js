@@ -18,15 +18,14 @@ function LoginWithGoogle() {
 }
 
 function tokenPOST(baluba) {
-  //console.log("ma bag la creatie cu codul " + code);
   console.log("ma bag la creatie");
-  console.log(baluba);
-  console.log(
-    JSON.stringify({
-      acc_tkn: baluba.provider_token,
-      ref_tkn: baluba.provider_refresh_token,
-    })
-  );
+  /*console.log(baluba);
+        console.log(
+          JSON.stringify({
+            acc_tkn: baluba.provider_token,
+            ref_tkn: baluba.provider_refresh_token,
+          })
+        );*/
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
@@ -39,8 +38,20 @@ function tokenPOST(baluba) {
     }),
     mode: "no-cors",
   }).then((response) => {
-    console.log(response);
+    response.text().then((text) => {
+      console.log(text);
+    });
   });
 }
 
-export { LoginWithGoogle, tokenPOST };
+function testServer() {
+  fetch("https://server-upldfy.vercel.app/test", {
+    method: "post", //response text and coonsole log response and text
+  }).then((response) => {
+    response.text().then((text) => {
+      console.log(text);
+    });
+  });
+}
+
+export { LoginWithGoogle, tokenPOST, testServer };
