@@ -20,12 +20,12 @@ function LoginWithGoogle() {
 function tokenPOST(baluba) {
   console.log("pula siua");
   /*console.log(baluba);
-                console.log(
-                  JSON.stringify({
-                    acc_tkn: baluba.provider_token,
-                    ref_tkn: baluba.provider_refresh_token,
-                  })
-                );*/
+                    console.log(
+                      JSON.stringify({
+                        acc_tkn: baluba.provider_token,
+                        ref_tkn: baluba.provider_refresh_token,
+                      })
+                    );*/
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
@@ -36,7 +36,6 @@ function tokenPOST(baluba) {
       acc_tkn: baluba.access_token,
       ref_tkn: baluba.provider_refresh_token,
     }),
-    mode: "no-cors",
   }).then((response) => {
     response.text().then((text) => {
       console.log(text);
