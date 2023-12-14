@@ -39,10 +39,7 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={() => testServer("suji carasu", "muie")}>
-                {" "}
-                test{" "}
-              </button>{" "}
+              <button onClick={() => testServer("sate", "fut")}> test </button>{" "}
             </div>
           ) : (
             <div>
@@ -50,7 +47,7 @@ function App() {
                 {" "}
                 Sign In with Google{" "}
               </button>{" "}
-              <button onClick={() => testServer("suji carasu", "muie")}>
+              <button onClick={() => testServer("sate", "fut")}>
                 {" "}
                 test{" "}
               </button>{" "}

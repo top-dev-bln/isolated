@@ -18,14 +18,14 @@ function LoginWithGoogle() {
 }
 
 function tokenPOST(baluba) {
-  console.log("ma bag la creatie");
+  console.log("pula siua");
   /*console.log(baluba);
-            console.log(
-              JSON.stringify({
-                acc_tkn: baluba.provider_token,
-                ref_tkn: baluba.provider_refresh_token,
-              })
-            );*/
+                console.log(
+                  JSON.stringify({
+                    acc_tkn: baluba.provider_token,
+                    ref_tkn: baluba.provider_refresh_token,
+                  })
+                );*/
 
   fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
@@ -45,7 +45,7 @@ function tokenPOST(baluba) {
 }
 
 function testServer(acc_tkn, ref_tkn) {
-  fetch("https://server-upldfy.vercel.app/test", {
+  fetch("https://server-upldfy.vercel.app/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
