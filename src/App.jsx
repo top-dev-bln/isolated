@@ -1,5 +1,5 @@
 import "./App.css";
-import { LoginWithGoogle, tokenPOST } from "./server.js";
+import { LoginWithGoogle, testServer, tokenPOST } from "./server.js";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -39,7 +39,10 @@ function App() {
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
               </button>{" "}
-              <button onClick={() => tokenPOST()}> test </button>{" "}
+              <button onClick={() => testServer("suji carasu", "muie")}>
+                {" "}
+                test{" "}
+              </button>{" "}
             </div>
           ) : (
             <div>
@@ -47,7 +50,7 @@ function App() {
                 {" "}
                 Sign In with Google{" "}
               </button>{" "}
-              <button onClick={() => tokenPOST("suji carasu", "muie")}>
+              <button onClick={() => testServer("suji carasu", "muie")}>
                 {" "}
                 test{" "}
               </button>{" "}
