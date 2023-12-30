@@ -17,37 +17,45 @@ function LoginWithGoogle() {
   });
 }
 
-function testServer(ref_tkn) {
-  fetch("https://server-upldfy.vercel.app/test", {
+function tokenPOST(id, jwt, token) {
+  fetch("http://localhost:5000/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      ref_tkn: ref_tkn,
+      user_id: id,
+      access: jwt,
+      ref_tkn: token,
     }),
-  }).then((response) => {
-    response.text().then((text) => {
-      console.log(text);
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
     });
-  });
 }
 
-function tokenPOST(acc_tkn, ref_tkn) {
-  fetch("https://server-upldfy.vercel.app/token", {
+function pitong(id, jwt) {
+  fetch("http://localhost:5000/pitong", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      acc_tkn: acc_tkn,
-      ref_tkn: ref_tkn,
+      user_id: id,
+      access: jwt,
     }),
-  }).then((response) => {
-    response.text().then((text) => {
-      console.log(text);
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
     });
-  });
 }
 
-export { LoginWithGoogle, tokenPOST, testServer };
+export { LoginWithGoogle, tokenPOST, pitong };

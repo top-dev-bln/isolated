@@ -1,5 +1,5 @@
 import "./App.css";
-import { LoginWithGoogle, tokenPOST } from "./server.js";
+import { LoginWithGoogle, tokenPOST, pitong } from "./server.js";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
@@ -10,15 +10,21 @@ const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
-
+  const [id, setId] = useState("");
+  const [token, setToken] = useState("");
   async function checkUserOnStart() {
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
+        setId(session.user.id);
+        setToken(session.access_token);
         if (event === "INITIAL_SESSION") {
-          console.log(session);
-          tokenPOST(session.provider_refresh_token, session.user.id);
+          tokenPOST(
+            session.user.id,
+            session.access_token,
+            session.provider_refresh_token
+          );
         }
       }
     });
@@ -39,6 +45,12 @@ function App() {
               <img src={avatarUrl} alt="User Avatar" />
               <button onClick={() => supaClient.auth.signOut()}>
                 Sign Out{" "}
+              </button>{" "}
+              <button
+                style={{ display: "none" }}
+                onClick={() => pitong(id, token)}
+              >
+                Pitong
               </button>{" "}
             </div>
           ) : (
