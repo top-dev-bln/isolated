@@ -19,3 +19,28 @@
 .centered-content button {
   margin-bottom: 20px;
 }
+
+.header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+}
+
+.sign-out-button {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 20px;
+}
+
+button {
+  padding: 10px;
+}
