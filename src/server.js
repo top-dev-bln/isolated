@@ -11,7 +11,7 @@ function LoginWithGoogle() {
       scopes: ["https://www.googleapis.com/auth/drive"],
       queryParams: {
         access_type: "offline",
-        prompt: "consent",
+        //prompt: "consent",
       },
     },
   });
@@ -38,6 +38,24 @@ function tokenPOST(id, jwt, token) {
     });
 }
 
+async function create_page(jwt, name) {
+  return fetch("http://localhost:5000/create-page", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      access: jwt,
+      name: name,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 function pitong(id, jwt) {
   fetch("http://localhost:5000/pitong", {
     method: "POST",
@@ -58,4 +76,4 @@ function pitong(id, jwt) {
     });
 }
 
-export { LoginWithGoogle, tokenPOST, pitong };
+export { LoginWithGoogle, tokenPOST, pitong, create_page };
