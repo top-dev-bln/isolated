@@ -18,7 +18,7 @@ export default function NotFound() {
             marginTop: "20px",
             padding: "10px 20px",
             fontSize: "18px",
-            backgroundColor: "darkgrey", // Updated color
+            backgroundColor: "darkgrey",
             color: "white",
             borderRadius: "5px",
             border: "none",

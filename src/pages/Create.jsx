@@ -18,7 +18,7 @@ const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function AddTask() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [token, setToken] = useState("");
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,8 +26,6 @@ export default function AddTask() {
 
   async function checkUserOnStart() {
     await supaClient.auth.onAuthStateChange((event, session) => {
-      setIsAuthenticated(!!session);
-
       if (session) {
         setToken(session.access_token);
       }
@@ -79,7 +77,7 @@ export default function AddTask() {
             alignItems={"center"}
             marginBottom="10"
           >
-            Upload Page
+            Create Upload Page
           </Text>
           <form onSubmit={handleSubmit}>
             <Text fontSize="xl">Page title</Text>
@@ -98,25 +96,11 @@ export default function AddTask() {
                 loadingText="Adding"
                 colorScheme="teal"
                 h="100%"
-                onClick={() => {
-                  console.log(text);
-                }}
               >
                 Blow Me!{" "}
               </Button>{" "}
             </HStack>{" "}
           </form>
-          <Button
-            onClick={() => {
-              if (isAuthenticated) {
-                console.log(token);
-              } else {
-                alert("User is not authenticated!");
-              }
-            }}
-          >
-            Blow Me!{" "}
-          </Button>{" "}
         </div>
       </Center>
     </div>

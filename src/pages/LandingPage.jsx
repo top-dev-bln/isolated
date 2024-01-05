@@ -14,7 +14,6 @@ const featuresList = [
     title: "Customizable Access Permissions",
     description: "Control who can view and edit your files.",
   },
-  // Add more features as needed
 ];
 
 const LandingPage = () => {

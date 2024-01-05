@@ -20,7 +20,6 @@ function App() {
   const [token, setToken] = useState("");
 
   async function checkUserOnStart() {
-    console.log("ce sa mai verif ca sunt verificat");
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
       if (!session) {
@@ -33,7 +32,10 @@ function App() {
         setAvatarUrl(session.user.user_metadata.avatar_url);
 
         setToken(session.access_token);
-        if (event === "INITIAL_SESSION") {
+        if (
+          event === "INITIAL_SESSION" &&
+          session.provider_refresh_token !== undefined
+        ) {
           tokenPOST(
             session.user.id,
             session.access_token,

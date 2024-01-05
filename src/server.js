@@ -28,14 +28,7 @@ function tokenPOST(id, jwt, token) {
     body: JSON.stringify({
       ref_tkn: token,
     }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  });
 }
 
 async function create_page(jwt, name) {
@@ -56,4 +49,16 @@ async function create_page(jwt, name) {
     });
 }
 
-export { LoginWithGoogle, tokenPOST, create_page };
+async function upload_file(id, formData) {
+  return fetch(`http://localhost:5000/upload/${id}`, {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+export { LoginWithGoogle, tokenPOST, create_page, upload_file };

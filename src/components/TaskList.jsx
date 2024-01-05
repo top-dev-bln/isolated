@@ -23,7 +23,6 @@ export default function TaskList(token) {
     return pages;
   };
 
-  //let tasks = fetchData().map((page) => page.title);
   useEffect(() => {
     const fetchAndSetTasks = async () => {
       const data = await fetchData();
@@ -31,12 +30,7 @@ export default function TaskList(token) {
     };
 
     fetchAndSetTasks();
-    console.log(tasks);
   }, []);
-
-  //fetchData().then((data) => {
-  //  setTasks(data.map((page) => page.name));
-  // });
 
   if (!tasks.length) {
     return (
