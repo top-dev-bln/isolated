@@ -4,72 +4,34 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { Heading, VStack, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import TaskList from "../components/TaskList.jsx";
-
-//import FormCreate from "./components/form.jsx";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 
 function App() {
+  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
 
-  /*const [showForm, setShowForm] = useState(false);
-      const [inputValues, setInputValues] = useState({
-        input1: "",
-        input2: "",
-        input3: "",
-      });*/
-
-  /* cod pentru form nu mai trebe
-      {showForm ? (
-                      <FormCreate
-                        onFormSubmit={handleFormSubmit}
-                        onInputChange={handleInputChange}
-                      />
-                    ) : (
-                      <button onClick={() => setShowForm(true)}>
-                        Create a new form
-                      </button>
-                    )}
-      */
-
-  // const [id, setId] = useState("");
   const [token, setToken] = useState("");
-
-  /* const handleFormSubmit = (values) => {
-    // Logic to handle form submission
-    console.log("Form submitted");
-    console.log("Input 1:", values.input1);
-    console.log("Input 2:", values.input2);
-    console.log("Input 3:", values.input3);
-
-    // Set showForm to false when form is submitted
-    setShowForm(false);
-  };
-
-  const handleInputChange = (name, value) => {
-    setInputValues({
-      ...inputValues,
-      [name]: value,
-    });
-  };
- */
 
   async function checkUserOnStart() {
     console.log("ce sa mai verif ca sunt verificat");
     await supaClient.auth.onAuthStateChange((event, session) => {
       setIsAuthenticated(!!session);
+      if (!session) {
+        setTimeout(() => {
+          navigate("/signup");
+        }, 100);
+      }
 
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
 
-        // getPages(session.access_token);
-
-        // setId(session.user.id);
         setToken(session.access_token);
         if (event === "INITIAL_SESSION") {
           tokenPOST(

@@ -5,7 +5,7 @@ function Dash() {
 
   return (
     <div>
-      <h1 style={{ marginBottom: "20px" }}>{id}</h1>
+      <h1 style={{ marginBottom: "20px" }}> {id} </h1>{" "}
       <Link
         to="/"
         style={{
@@ -17,8 +17,8 @@ function Dash() {
           textDecoration: "none",
         }}
       >
-        Back to Home
-      </Link>
+        Back to Home{" "}
+      </Link>{" "}
     </div>
   );
 }

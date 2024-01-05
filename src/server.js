@@ -13,19 +13,19 @@ function LoginWithGoogle() {
         access_type: "offline",
         //prompt: "consent",
       },
+      redirectTo: "http://localhost:3000/my-pages",
     },
   });
 }
 
 function tokenPOST(id, jwt, token) {
-  fetch("http://localhost:5000/token", {
+  fetch(`http://localhost:5000/token/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify({
-      user_id: id,
-      access: jwt,
       ref_tkn: token,
     }),
   })
@@ -43,9 +43,9 @@ async function create_page(jwt, name) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify({
-      access: jwt,
       name: name,
     }),
   })
@@ -56,24 +56,4 @@ async function create_page(jwt, name) {
     });
 }
 
-function pitong(id, jwt) {
-  fetch("http://localhost:5000/pitong", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user_id: id,
-      access: jwt,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
-
-export { LoginWithGoogle, tokenPOST, pitong, create_page };
+export { LoginWithGoogle, tokenPOST, create_page };

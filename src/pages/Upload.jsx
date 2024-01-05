@@ -31,8 +31,7 @@ export default function Upload() {
         flexDirection: "column",
       }}
     >
-      <h1>Upload</h1>
-      <p style={{ marginTop: "1rem" }}>{id}</p>
+      <h1> Upload </h1> <p style={{ marginTop: "1rem" }}> {id} </p>{" "}
       <div
         onDrop={handleDrop}
         onDragOver={(event) => event.preventDefault()}
@@ -50,7 +49,7 @@ export default function Upload() {
         }}
         onClick={handleFileInputClick}
       >
-        <div>Click or drop files here</div>
+        <div> Click or drop files here </div>{" "}
         <input
           type="file"
           ref={fileInputRef}
@@ -58,12 +57,13 @@ export default function Upload() {
           onChange={handleFileInputChange}
           multiple
         />
-      </div>
+      </div>{" "}
       <ul>
+        {" "}
         {droppedFiles.map((file, index) => (
-          <li key={index}>{file.name}</li>
-        ))}
-      </ul>
+          <li key={index}> {file.name} </li>
+        ))}{" "}
+      </ul>{" "}
     </div>
   );
 }
