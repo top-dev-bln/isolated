@@ -18,6 +18,26 @@ function LoginWithGoogle() {
   });
 }
 
+function page_info(id) {
+  return fetch(`http://localhost:5000/page-info/${id}`, {
+    method: "GET",
+  });
+}
+
+async function fetch_pages(jwt) {
+  return fetch("http://localhost:5000/my-pages", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 function tokenPOST(id, jwt, token) {
   fetch(`http://localhost:5000/token/${id}`, {
     method: "POST",
@@ -61,4 +81,11 @@ async function upload_file(id, formData) {
     });
 }
 
-export { LoginWithGoogle, tokenPOST, create_page, upload_file };
+export {
+  LoginWithGoogle,
+  tokenPOST,
+  create_page,
+  upload_file,
+  page_info,
+  fetch_pages,
+};

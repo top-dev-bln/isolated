@@ -6,7 +6,7 @@ import { Heading, VStack, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import TaskList from "../components/TaskList.jsx";
+import PageList from "../components/PageList.jsx";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -84,7 +84,7 @@ function App() {
                 >
                   Suck{" "}
                 </Heading>{" "}
-                <TaskList token={token} />{" "}
+                <PageList token={token} />{" "}
                 <Link to="/create">
                   <Button w="100%" px={"200px"}>
                     Create{" "}

@@ -1,38 +1,25 @@
 import { VStack, StackDivider, HStack, Text, Link } from "@chakra-ui/react";
-import { createClient } from "@supabase/supabase-js";
+
 import { useEffect, useState } from "react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+import { fetch_pages } from "../server.js";
 
-export default function TaskList(token) {
+export default function PageList(token) {
   const navigate = useNavigate();
-  const [tasks, setTasks] = useState([]);
-
-  const fetchData = async () => {
-    const authed = createClient(supabaseUrl, supabaseAnonKey, {
-      global: {
-        headers: {
-          Authorization: `Bearer ${token.token}`,
-        },
-      },
-    });
-    let { data: pages } = await authed.from("pages").select("*");
-
-    return pages;
-  };
+  const [pages, setpages] = useState([]);
 
   useEffect(() => {
-    const fetchAndSetTasks = async () => {
-      const data = await fetchData();
-      setTasks(data.map((page) => page));
+    const fetchAndSetpages = async () => {
+      const response = await fetch_pages(token.token);
+      const responseData = response.data;
+      setpages(responseData.map((page) => page));
     };
 
-    fetchAndSetTasks();
+    fetchAndSetpages();
   }, []);
 
-  if (!tasks.length) {
+  if (!pages.length) {
     return (
       <img
         src={
@@ -60,12 +47,12 @@ export default function TaskList(token) {
         maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "30vw" }}
         alignItems="stretch"
       >
-        {tasks.map((task) => (
-          <HStack key={task.name}>
+        {pages.map((page) => (
+          <HStack key={page.name}>
             <Text w="100%" p="8px" borderRadius="lg">
-              <Link onClick={() => navigate(task.id)}>{task.name}</Link>{" "}
+              <Link onClick={() => navigate(page.id)}>{page.name}</Link>{" "}
             </Text>{" "}
-            <Link href={"/p/" + task.id} isExternal>
+            <Link href={"/p/" + page.id} isExternal>
               <ExternalLinkIcon />
             </Link>
           </HStack>

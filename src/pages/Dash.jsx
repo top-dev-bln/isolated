@@ -1,7 +1,10 @@
 import { useParams, Link } from "react-router-dom";
-
+//todo get uppies to work
 function Dash() {
   const { id } = useParams();
+
+  //todo make dash
+  //todo make modal
 
   return (
     <div>

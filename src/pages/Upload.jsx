@@ -1,13 +1,15 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button, HStack, Input, useToast, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { upload_file } from "../server.js";
+import { upload_file, page_info } from "../server.js";
 
+//todo inteles use ref si cum functioneaza luarea de fisiere
 export default function Upload() {
   const { id } = useParams();
   const [droppedFiles, setDroppedFiles] = useState([]);
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
   const fileInputRef = useRef(null);
   const toast = useToast();
   async function handleSubmit(e) {
@@ -24,7 +26,7 @@ export default function Upload() {
     const result = await upload_file(id, formData);
 
     setLoading(false);
-    setText("");
+    //setText("");
 
     toast({
       title: result.upload_status === "ok" ? "Uploaded!" : "Error",
@@ -33,11 +35,6 @@ export default function Upload() {
       duration: 2000,
       isClosable: true,
     });
-
-    if (result.upload_status === "ok") {
-      console.log("got uploaded");
-      console.log(result);
-    }
   }
   const removeFile = (index) => {
     const updatedFiles = [...droppedFiles];
@@ -84,6 +81,16 @@ export default function Upload() {
     setDroppedFiles([...droppedFiles, ...files]);
   };
 
+  useEffect(() => {
+    const fetchAndSetinfo = async () => {
+      const response = await page_info(id);
+      const data = await response.json();
+      setTitle(data.name);
+    };
+
+    fetchAndSetinfo();
+  }, []);
+
   return (
     <div
       style={{
@@ -94,7 +101,7 @@ export default function Upload() {
         flexDirection: "column",
       }}
     >
-      <h1> Upload </h1> <p style={{ marginTop: "1rem" }}> {id} </p>{" "}
+      <h1> Upload </h1> <p style={{ marginTop: "1rem" }}> {title} </p>{" "}
       <div
         onDrop={handleDrop}
         onDragOver={(event) => event.preventDefault()}
