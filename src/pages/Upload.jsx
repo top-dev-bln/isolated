@@ -86,11 +86,12 @@ export default function Upload() {
       const response = await page_info(id);
       const data = await response.json();
       setTitle(data.name);
+      
     };
-
+    
     fetchAndSetinfo();
   }, []);
-
+  
   return (
     <div
       style={{
