@@ -13,6 +13,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 
 function App() {
+  console.log("Home component rendered");
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
@@ -33,9 +34,10 @@ function App() {
 
         setToken(session.access_token);
         if (
-          event === "INITIAL_SESSION" &&
-          session.provider_refresh_token !== undefined
+          event === "INITIAL_SESSION" // &&
+          //session.provider_refresh_token !== undefined
         ) {
+          console.log("call");
           tokenPOST(
             session.user.id,
             session.access_token,
@@ -47,6 +49,12 @@ function App() {
   }
 
   useEffect(() => {
+    //console.log the time
+    console.log(new Date().toLocaleTimeString());
+    //console log the timestamp
+    console.log(Date.now());
+    console.log("cock and ball");
+
     checkUserOnStart();
   }, []);
 

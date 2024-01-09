@@ -5,6 +5,7 @@ import { upload_file, page_info } from "../server.js";
 
 //todo inteles use ref si cum functioneaza luarea de fisiere
 export default function Upload() {
+  console.log("Upload component rendered");
   const { id } = useParams();
   const [droppedFiles, setDroppedFiles] = useState([]);
   const [text, setText] = useState("");
@@ -86,12 +87,11 @@ export default function Upload() {
       const response = await page_info(id);
       const data = await response.json();
       setTitle(data.name);
-      
     };
-    
+
     fetchAndSetinfo();
   }, []);
-  
+
   return (
     <div
       style={{

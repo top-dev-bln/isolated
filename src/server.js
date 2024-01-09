@@ -11,7 +11,8 @@ function LoginWithGoogle() {
       scopes: ["https://www.googleapis.com/auth/drive"],
       queryParams: {
         access_type: "offline",
-        //prompt: "consent",
+        //todo scos consent
+        prompt: "consent",
       },
       redirectTo: "http://localhost:3000/my-pages",
     },

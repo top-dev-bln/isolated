@@ -17,6 +17,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function AddTask() {
+  console.log("AddTask component rendered");
   const navigate = useNavigate();
 
   const [token, setToken] = useState("");

@@ -8,6 +8,7 @@ import Landing from "./pages/LandingPage.jsx";
 import Sign from "./pages/Sign.jsx";
 
 function App() {
+  console.log("App component rendered");
   return (
     <div>
       <Router>
