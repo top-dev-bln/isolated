@@ -8,7 +8,6 @@ import monkeyImage from "../assets/monk.jpg";
 import { useNavigate } from "react-router-dom";
 
 export default function Sign() {
-  console.log("Sign component rendered");
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 

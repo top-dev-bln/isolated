@@ -2,7 +2,6 @@ import monkeyImage from "../assets/monkey.jpg";
 import { Link } from "react-router-dom";
 
 export default function NotFound() {
-  console.log("NotFound component rendered");
   return (
     <div
       style={{

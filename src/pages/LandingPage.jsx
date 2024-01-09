@@ -21,7 +21,7 @@ const LandingPage = () => {
   useEffect(() => {
     console.log("canella");
   }, []);
-  console.log("Landing component rendered");
+
   return (
     <div className="landing-page">
       <header>

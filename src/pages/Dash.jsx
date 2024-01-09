@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 //todo get uppies to work
 function Dash() {
-  console.log("Dash component rendered");
   const { id } = useParams();
 
   //todo make dash
