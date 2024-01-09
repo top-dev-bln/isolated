@@ -20,6 +20,7 @@ const featuresList = [
 const LandingPage = () => {
   useEffect(() => {
     console.log("canella");
+    console.log("canella1");
   }, []);
 
   return (
