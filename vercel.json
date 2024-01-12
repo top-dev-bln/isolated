@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/proxy/:match*",
-      "destination": "https://example.com/:match*"
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/my-pages",
+      "destination": "/"
     }
   ]
 }
