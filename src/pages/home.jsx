@@ -36,8 +36,6 @@ function App() {
           event === "INITIAL_SESSION" &&
           session.provider_refresh_token !== undefined
         ) {
-          console.log("call");
-          console.log(session.provider_refresh_token);
           tokenPOST(
             session.user.id,
             session.access_token,
