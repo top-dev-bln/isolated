@@ -48,7 +48,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("canellaeffect");
     checkUserOnStart();
   }, []);
 

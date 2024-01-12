@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import "./css/LandingPage.css";
-import { useEffect } from "react";
 
 const featuresList = [
   {
-    title: "Easy File Uploads - Canella",
+    title: "Easy File Uploads ",
     description: "Quick and seamless file uploading process.",
   },
   {
@@ -18,11 +17,6 @@ const featuresList = [
 ];
 
 const LandingPage = () => {
-  useEffect(() => {
-    console.log("canella");
-    console.log("canella1");
-  }, []);
-
   return (
     <div className="landing-page">
       <header>
