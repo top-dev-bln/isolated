@@ -33,10 +33,11 @@ function App() {
 
         setToken(session.access_token);
         if (
-          event === "INITIAL_SESSION" // &&
-          //session.provider_refresh_token !== undefined //todo scos de aici
+          event === "INITIAL_SESSION" &&
+          session.provider_refresh_token !== undefined
         ) {
           console.log("call");
+          console.log(session.provider_refresh_token);
           tokenPOST(
             session.user.id,
             session.access_token,

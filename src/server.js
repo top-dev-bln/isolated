@@ -11,8 +11,7 @@ function LoginWithGoogle() {
       scopes: ["https://www.googleapis.com/auth/drive"],
       queryParams: {
         access_type: "offline",
-        //todo scos consent
-        prompt: "consent",
+        //prompt: "consent",
       },
       redirectTo: "https://isolated.vercel.app/my-pages",
     },
