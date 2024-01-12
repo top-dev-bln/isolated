@@ -3,9 +3,9 @@
     { "src": "/", "dest": "/" },
     { "src": "/signup", "dest": "/" },
     { "src": "/my-pages", "dest": "/" },
-    { "src": "/my-pages/:id", "dest": "/pages/Dash.jsx" },
-    { "src": "/create", "dest": "/pages/LandingPage.jsx" },
-    { "src": "/p/:id", "dest": "/pages/Upload.jsx" },
-    { "src": "/(.*)", "dest": "/pages/404.jsx" }
+    { "src": "/my-pages/:id", "dest": "/" },
+    { "src": "/create", "dest": "/" },
+    { "src": "/p/:id", "dest": "/" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
