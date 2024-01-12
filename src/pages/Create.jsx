@@ -49,7 +49,7 @@ export default function AddTask() {
     });
 
     if (result.create_status === "ok") {
-      navigate(`/${result.data[0].id}`);
+      navigate(`/my-pages/${result.data[0].id}`);
     }
   }
 
