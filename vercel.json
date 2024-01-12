@@ -1,0 +1,11 @@
+{
+  "routes": [
+    { "src": "/", "dest": "/pages/LandingPage.jsx" },
+    { "src": "/signup", "dest": "/pages/Sign.jsx" },
+    { "src": "/my-pages", "dest": "/pages/Home.jsx" },
+    { "src": "/my-pages/:id", "dest": "/pages/Dash.jsx" },
+    { "src": "/create", "dest": "/pages/Create.jsx" },
+    { "src": "/p/:id", "dest": "/pages/Upload.jsx" },
+    { "src": "/(.*)", "dest": "/pages/404.jsx" }
+  ]
+}
