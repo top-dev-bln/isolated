@@ -29,6 +29,11 @@ export default function AddTask() {
       if (session) {
         setToken(session.access_token);
       }
+      if (!session) {
+        setTimeout(() => {
+          navigate("/signup");
+        }, 100);
+      }
     });
   }
 
