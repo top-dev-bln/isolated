@@ -44,6 +44,7 @@ export default function AddTask() {
     const result = await create_page(token, text);
     setLoading(false);
     setText("");
+    console.log(result);
 
     toast({
       title: result.create_status === "ok" ? "Page Created!" : "Error",
