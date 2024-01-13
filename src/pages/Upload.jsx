@@ -26,7 +26,8 @@ export default function Upload() {
     const result = await upload_file(id, formData);
 
     setLoading(false);
-    //setText("");
+    setText("");
+    setDroppedFiles([]);
 
     toast({
       title: result.upload_status === "ok" ? "Uploaded!" : "Error",
