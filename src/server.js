@@ -13,19 +13,19 @@ function LoginWithGoogle() {
         access_type: "offline",
         //prompt: "consent",
       },
-      redirectTo: "http://localhost:3000/my-pages",
+      redirectTo: "https://isolated.vercel.app/my-pages",
     },
   });
 }
 
 function page_info(id) {
-  return fetch(`http://localhost:5000/page-info/${id}`, {
+  return fetch(`https://server-upldfy.vercel.app/page-info/${id}`, {
     method: "GET",
   });
 }
 
 async function fetch_pages(jwt) {
-  return fetch("http://localhost:5000/my-pages", {
+  return fetch("https://server-upldfy.vercel.app/my-pages", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${jwt}`,
@@ -39,7 +39,7 @@ async function fetch_pages(jwt) {
 }
 
 async function fetch_uploads(jwt, id) {
-  return fetch(`http://localhost:5000/my-uploads/${id}`, {
+  return fetch(`https://server-upldfy.vercel.app/my-uploads/${id}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${jwt}`,
@@ -53,7 +53,7 @@ async function fetch_uploads(jwt, id) {
 }
 
 function tokenPOST(id, jwt, token) {
-  fetch(`http://localhost:5000/token/${id}`, {
+  fetch(`https://server-upldfy.vercel.app/token/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function tokenPOST(id, jwt, token) {
 }
 
 async function create_page(jwt, name) {
-  return fetch("http://localhost:5000/create-page", {
+  return fetch("https://server-upldfy.vercel.app/create-page", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -84,7 +84,7 @@ async function create_page(jwt, name) {
 }
 
 async function delete_page(id, jwt) {
-  return fetch(`http://localhost:5000/delete-page/${id}`, {
+  return fetch(`https://server-upldfy.vercel.app/delete-page/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -99,7 +99,7 @@ async function delete_page(id, jwt) {
 }
 
 async function upload_file(id, formData) {
-  return fetch(`http://localhost:5000/upload/${id}`, {
+  return fetch(`https://server-upldfy.vercel.app/upload/${id}`, {
     method: "POST",
     body: formData,
   })
