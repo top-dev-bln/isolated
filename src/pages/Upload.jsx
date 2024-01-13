@@ -3,7 +3,6 @@ import { Button, HStack, Input, useToast, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { upload_file, page_info } from "../server.js";
 
-//todo inteles use ref si cum functioneaza luarea de fisiere
 export default function Upload() {
   const { id } = useParams();
   const [droppedFiles, setDroppedFiles] = useState([]);

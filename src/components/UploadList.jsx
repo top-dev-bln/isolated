@@ -35,7 +35,6 @@ export default function UploadList({ token, id }) {
       const response = await fetch_uploads(token, id);
       const responseData = response.data;
       setPages(responseData.map((page) => page));
-      console.log(pages);
     };
 
     fetchAndSetPages();
