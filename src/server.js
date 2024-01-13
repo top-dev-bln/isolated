@@ -38,6 +38,20 @@ async function fetch_pages(jwt) {
     });
 }
 
+async function fetch_uploads(jwt, id) {
+  return fetch(`http://localhost:5000/my-uploads/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 function tokenPOST(id, jwt, token) {
   fetch(`http://localhost:5000/token/${id}`, {
     method: "POST",
@@ -69,6 +83,21 @@ async function create_page(jwt, name) {
     });
 }
 
+async function delete_page(id, jwt) {
+  return fetch(`http://localhost:5000/delete-page/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 async function upload_file(id, formData) {
   return fetch(`http://localhost:5000/upload/${id}`, {
     method: "POST",
@@ -88,4 +117,6 @@ export {
   upload_file,
   page_info,
   fetch_pages,
+  fetch_uploads,
+  delete_page,
 };

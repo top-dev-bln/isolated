@@ -26,3 +26,18 @@ body {
 button {
   padding: 10px;
 }
+
+.dash-btns {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.dash-btn {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
