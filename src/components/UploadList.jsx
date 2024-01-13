@@ -1,4 +1,5 @@
 import { VStack, StackDivider, HStack, Text, Link } from "@chakra-ui/react";
+import { DownloadIcon } from "@chakra-ui/icons";
 import {
   Modal,
   Button,
@@ -10,9 +11,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-
 import { useEffect, useState } from "react";
-
 import { fetch_uploads } from "../server.js";
 import PropTypes from "prop-types";
 
@@ -28,18 +27,25 @@ export default function UploadList({ token, id }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<OverlayOne />);
-  const [pages, setpages] = useState([]);
+  const [pages, setPages] = useState([]);
+  const [selectedPage, setSelectedPage] = useState(null);
 
   useEffect(() => {
-    const fetchAndSetpages = async () => {
+    const fetchAndSetPages = async () => {
       const response = await fetch_uploads(token, id);
       const responseData = response.data;
-      setpages(responseData.map((page) => page));
+      setPages(responseData.map((page) => page));
       console.log(pages);
     };
 
-    fetchAndSetpages();
+    fetchAndSetPages();
   }, []);
+
+  const openModal = (page) => {
+    setSelectedPage(page);
+    setOverlay(<OverlayOne />);
+    onOpen();
+  };
 
   if (!pages.length) {
     return (
@@ -59,19 +65,6 @@ export default function UploadList({ token, id }) {
 
   return (
     <>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
-        {overlay}
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>Suji Pula</Text>
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
       <VStack
         divider={<StackDivider />}
         borderColor="gray.100"
@@ -85,19 +78,57 @@ export default function UploadList({ token, id }) {
         {pages.map((page) => (
           <HStack key={page.name}>
             <Text w="100%" p="8px" borderRadius="lg">
-              <Link>{page.name}</Link>{" "}
-            </Text>{" "}
+              <Link onClick={() => openModal(page)}>{page.name}</Link>
+            </Text>
           </HStack>
-        ))}{" "}
-        <Button
-          onClick={() => {
-            setOverlay(<OverlayOne />);
-            onOpen();
-          }}
-        >
-          Use Overlay one
-        </Button>
-      </VStack>{" "}
+        ))}
+      </VStack>
+
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        {overlay}
+        <ModalContent>
+          <ModalHeader>{selectedPage?.name}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>Files:</Text>
+            <VStack
+              divider={<StackDivider />}
+              borderColor="gray.100"
+              borderWidth="2px"
+              p="5"
+              borderRadius="lg"
+              w="100%"
+              maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "30vw" }}
+              alignItems="stretch"
+            >
+              {selectedPage?.files.map((file) => (
+                <HStack key={file.id}>
+                  <Text w="100%" p="8px" borderRadius="lg">
+                    <Link
+                      href={`https://drive.google.com/file/d/${file.link}/view`}
+                    >
+                      {`${file.name.substring(
+                        0,
+                        file.name.lastIndexOf(".")
+                      )}`.substring(0, 20) +
+                        `${file.name.slice(file.name.lastIndexOf("."))}`}
+                    </Link>
+                  </Text>
+                  <Link
+                    href={`https://drive.google.com/uc?id=${file.link}&export=download`}
+                    isExternal
+                  >
+                    <DownloadIcon />
+                  </Link>
+                </HStack>
+              ))}
+            </VStack>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
