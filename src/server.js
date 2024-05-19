@@ -15,7 +15,7 @@ function LoginWithGoogle() {
                 access_type: "offline",
                 //prompt: "consent",
             },
-            redirectTo: "http://192.168.0.102:3000/my-pages",
+            redirectTo: "https://isolated.vercel.app/my-pages",
         },
     });
 }
