@@ -31,7 +31,7 @@ export default function AddTask() {
       }
       if (!session) {
         setTimeout(() => {
-          navigate("/signup");
+          navigate("/");
         }, 100);
       }
     });

@@ -13,7 +13,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/signup" element={<Sign />} />
           <Route path="/my-pages" element={<Home />} />
           <Route path="/my-pages/:id" element={<Dash />} />
           <Route path="/create" element={<Create />} />

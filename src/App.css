@@ -1,43 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
-  display: block;
-}
-
-.header-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  display: flex;
-}
-
-.sign-out-button {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.avatar {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  border-radius: 20px;
-}
-
-button {
-  padding: 10px;
-}
-
-.dash-btns {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.dash-btn {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
-}
+    background-color: #0a0a0a;
+};

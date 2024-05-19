@@ -24,7 +24,7 @@ function App() {
       setIsAuthenticated(!!session);
       if (!session) {
         setTimeout(() => {
-          navigate("/signup");
+          navigate("/");
         }, 100);
       }
 

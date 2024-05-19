@@ -4,6 +4,29 @@ import { useEffect, useState } from "react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { fetch_pages } from "../server.js";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      night: "#0A0A0A",
+      spring: "#5CFF9D",
+      mint: "#F0F7EE",
+      jet: "#333135"
+      
+    },
+  },
+  styles: {
+    global: {
+      body: {
+        bg: "brand.night",
+        color: "brand.mint",
+      },
+    },
+  },
+})
+
 
 export default function PageList(token) {
   const navigate = useNavigate();
@@ -37,6 +60,9 @@ export default function PageList(token) {
 
   return (
     <>
+      <ChakraProvider theme={theme}>
+  
+ 
       <VStack
         divider={<StackDivider />}
         borderColor="gray.100"
@@ -57,7 +83,8 @@ export default function PageList(token) {
             </Link>
           </HStack>
         ))}{" "}
-      </VStack>{" "}
+        </VStack>{" "}
+        </ChakraProvider>{" "}
     </>
   );
 }

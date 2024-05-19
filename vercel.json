@@ -1,11 +1,10 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/" },
-    { "source": "/signup", "destination": "/" },
-    { "source": "/my-pages", "destination": "/" },
-    { "source": "/my-pages/:id", "destination": "/" },
-    { "source": "/create", "destination": "/" },
-    { "source": "/p/:id", "destination": "/" },
-    { "source": "/(.*)", "destination": "/" }
-  ]
+    "rewrites": [
+        { "source": "/", "destination": "/" },
+        { "source": "/my-pages", "destination": "/" },
+        { "source": "/my-pages/:id", "destination": "/" },
+        { "source": "/create", "destination": "/" },
+        { "source": "/p/:id", "destination": "/" },
+        { "source": "/(.*)", "destination": "/" }
+    ]
 }

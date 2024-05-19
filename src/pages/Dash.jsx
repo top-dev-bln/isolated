@@ -16,6 +16,30 @@ import UploadList from "../components/UploadList.jsx";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supaClient = createClient(supabaseUrl, supabaseAnonKey);
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+
+const theme = extendTheme({
+    colors: {
+        brand: {
+            night: "#0A0A0A",
+            spring: "#5CFF9D",
+            mint: "#F0F7EE",
+            jet: "#333135"
+
+        },
+    },
+    styles: {
+        global: {
+            body: {
+                bg: "brand.night",
+                color: "brand.mint",
+            },
+        },
+    },
+})
+
+
 
 function Dash() {
   const { id } = useParams();
@@ -31,7 +55,7 @@ function Dash() {
       setIsAuthenticated(!!session);
       if (!session) {
         setTimeout(() => {
-          navigate("/signup");
+          navigate("/");
         }, 100);
       }
 
@@ -82,6 +106,9 @@ function Dash() {
   };
 
   return (
+    <ChakraProvider theme = { theme } >
+
+    
     <div>
       <div>
         {" "}
@@ -137,7 +164,9 @@ function Dash() {
           </div>
         )}{" "}
       </div>{" "}
-    </div>
+      </div>
+      </ChakraProvider>
+    
   );
 }
 

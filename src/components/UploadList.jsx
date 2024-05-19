@@ -14,6 +14,31 @@ import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { fetch_uploads } from "../server.js";
 import PropTypes from "prop-types";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      night: "#0A0A0A",
+      spring: "#5CFF9D",
+      mint: "#F0F7EE",
+      jet: "#333135"
+      
+    },
+  },
+  styles: {
+    global: {
+      body: {
+        bg: "brand.night",
+        color: "brand.mint",
+      },
+    },
+  },
+})
+
+
+
 
 export default function UploadList({ token, id }) {
   UploadList.propTypes = {
@@ -64,6 +89,10 @@ export default function UploadList({ token, id }) {
 
   return (
     <>
+      
+<ChakraProvider theme={theme}>
+  
+
       <VStack
         divider={<StackDivider />}
         borderColor="gray.100"
@@ -127,7 +156,8 @@ export default function UploadList({ token, id }) {
             <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+        </Modal>
+        </ChakraProvider>{" "}
     </>
   );
 }
