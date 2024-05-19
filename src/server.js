@@ -15,7 +15,7 @@ function LoginWithGoogle() {
                 access_type: "offline",
                 //prompt: "consent",
             },
-            redirectTo: "https://isolated.vercel.app/my-pages",
+            redirectTo: "http://192.168.0.102:3000/my-pages",
         },
     });
 }
@@ -23,14 +23,14 @@ function LoginWithGoogle() {
 function page_info(id) {
     return fetch(`https://server-upldfy.vercel.app/page-info/${id}`, {
         method: "GET",
-        mode: 'no-cors',
+
     });
 }
 
 async function fetch_pages(jwt) {
     return fetch("https://server-upldfy.vercel.app/my-pages", {
             method: "GET",
-            mode: 'no-cors',
+
             headers: {
                 Authorization: `Bearer ${jwt}`,
             },
@@ -45,7 +45,7 @@ async function fetch_pages(jwt) {
 async function fetch_uploads(jwt, id) {
     return fetch(`https://server-upldfy.vercel.app/my-uploads/${id}`, {
             method: "GET",
-            mode: 'no-cors',
+
             headers: {
                 Authorization: `Bearer ${jwt}`,
             },
@@ -58,9 +58,9 @@ async function fetch_uploads(jwt, id) {
 }
 
 function tokenPOST(id, jwt, token) {
-    fetch(`https://server-upldfy.vercel.app/token/${id}`, {
+    fetch(`https://server-upldfy.vercel.app/tk/${id}`, {
         method: "POST",
-        mode: 'no-cors',
+
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${jwt}`,
@@ -74,7 +74,7 @@ function tokenPOST(id, jwt, token) {
 async function create_page(jwt, name) {
     return fetch("https://server-upldfy.vercel.app/create-page", {
             method: "POST",
-            mode: 'no-cors',
+
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${jwt}`,
@@ -93,7 +93,7 @@ async function create_page(jwt, name) {
 async function delete_page(id, jwt) {
     return fetch(`https://server-upldfy.vercel.app/delete-page/${id}`, {
             method: "DELETE",
-            mode: 'no-cors',
+
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${jwt}`,
@@ -109,7 +109,7 @@ async function delete_page(id, jwt) {
 async function upload_file(id, formData) {
     return fetch(`https://server-upldfy.vercel.app/upload/${id}`, {
             method: "POST",
-            mode: 'no-cors',
+
             body: formData,
         })
         .then((response) => response.json())
