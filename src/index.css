@@ -15,11 +15,12 @@ nav.bg-gray-800 {
 .nav-btn {
     padding: 0.5rem 1rem; /* Adjust padding as needed */
     border-radius: 0.5rem; /* Rounded corners */
-    background-color: #0C0C0C ; /* Lighter background color */
+    border: 1px solid #fff; /* White border */
+    background-color: transparent;/* Lighter background color */
    
 }
 
 /* Navbar button hover effect */
 .nav-btn:hover {
-    background-color: #2a2a2a; /* Even lighter background color on hover */
+   background:blur(1px); /* Add a blur effect */
 }

@@ -5,7 +5,7 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { fetch_pages } from "../server.js";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-
+import first from "../assets/first.jpeg";
 
 const theme = extendTheme({
   colors: {
@@ -46,7 +46,7 @@ export default function PageList(token) {
     return (
       <img
         src={
-          "https://avatars.githubusercontent.com/u/153359426?s=400&u=ffe605829e9e4b8eb4498c05ef3b5e1907df50bb&v=4"
+          first
         }
         style={{
           display: "block",
@@ -83,6 +83,7 @@ export default function PageList(token) {
             </Link>
           </HStack>
         ))}{" "}
+        
         </VStack>{" "}
          </ChakraProvider>{" "}
     </>

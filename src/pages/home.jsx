@@ -2,7 +2,7 @@ import "../App.css";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { tokenPOST } from "../server.js";
-import { VStack, Button, Avatar, Center } from "@chakra-ui/react";
+import { VStack, Button, Center } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/bruv.svg";
@@ -53,14 +53,15 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div>
+    <div className="App h-screen bg-gradient-to-r from-blue-500 to-teal-500">
       <nav className="bg-gray-800 rounded-lg p-4">
         
         <div className='flex justify-between items-center text-white'>
           <a className="flex items-center text-3xl font-bold text-white" href="/my-pages">
             <img className='w-7 h-7 mr-3' src={logo} alt="logo" />Uploadify
           </a>
-          <ul className="flex">
+          <ul className="flex ">
             <li className='p-4'>
               <button className="nav-btn" onClick={() => navigate("/")}>Home</button>
             </li>
@@ -68,9 +69,9 @@ function App() {
             <li className='p-4'>
             <button 
                 onClick={() => supaClient.auth.signOut()} 
-                className="flex items-center rounded-lg"
+                className="flex items-center rounded-lg nav-btn"
               >
-                <Avatar className ="rounded-full" src={avatarUrl} name="User Avatar" boxSize="40px"  />
+                <img className ="rounded-full flex items-center object-scale-down h-6" src={avatarUrl} name="User Avatar" />
                 <p className="ml-2 text-white">Sign Out</p>
               </button>
             </li>
@@ -81,15 +82,16 @@ function App() {
         </nav>
       <div>
         {isAuthenticated ? (
-          <Center h="60vh">
+          <Center h="55vh">
       
         <VStack spacing={8} color="white">
           
           <h1  className="text-7xl font-bold mb-[100px]">My Pages</h1>
           <PageList token={token} />
-          <Link to="/create">
-            <Button colorScheme="blue">Create New Page</Button>
-          </Link>
+              <Link className="nav-btn" to="/create">
+                <Button colorScheme="blue">Create New Page</Button>
+              </Link>
+
         </VStack>
       
       </Center>
@@ -107,8 +109,11 @@ function App() {
         )}
   
     
-      <Footer />
+      
       </div>
+      
+    </div>
+    <Footer />
     </div>
   );
 }

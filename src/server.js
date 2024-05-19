@@ -15,7 +15,7 @@ function LoginWithGoogle() {
                 access_type: "offline",
                 //prompt: "consent",
             },
-            redirectTo: "https://isolated.vercel.app/my-pages",
+            redirectTo: "http://localhost:3000/my-pages",
         },
     });
 }
@@ -23,6 +23,7 @@ function LoginWithGoogle() {
 function page_info(id) {
     return fetch(`https://server-upldfy.vercel.app/page-info/${id}`, {
         method: "GET",
+        mode: "no-cors",
 
     });
 }

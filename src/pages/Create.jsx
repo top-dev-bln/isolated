@@ -1,9 +1,7 @@
 import {
-  Button,
-  HStack,
-  Input,
-  Center,
-  Text,
+
+
+ 
   useToast,
   Avatar,
 } from "@chakra-ui/react";
@@ -95,52 +93,33 @@ export default function AddTask() {
               
             
         </nav>
-      <Center>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            height: "60vh",
-          }}
+  <div className="h-screen bg-gradient-to-r from-blue-500 to-teal-500">
+  <div className="flex flex-col justify-center items-center h-full w-full p-4">
+    <h1 className="text-5xl font-bold text-white mb-10">
+      Create Upload Page
+    </h1>
+    <form onSubmit={handleSubmit} className="w-full max-w-lg">
+      <label className="block text-2xl text-white mb-4">Page title</label>
+      <div className="flex items-center mb-6">
+        <input
+          type="text"
+          placeholder="Title"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          disabled={loading}
+          className="w-full p-3 rounded-l-lg text-gray-800 focus:outline-none focus:shadow-outline"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className={`bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-lg transition-colors duration-300 ${loading ? "cursor-not-allowed" : ""}`}
         >
-          <Text
-            fontSize="3xl"
-            fontWeight="bold"
-            display="flex"
-            justifyContent={"center"}
-            alignItems={"center"}
-            marginBottom="10"
-            color="white"
-          >
-            Create Upload Page
-          </Text>
-          <form onSubmit={handleSubmit}>
-            <Text fontSize="xl" color="white">Page title</Text>
-            <HStack my="4" h="45" className="relative">
-              <Input
-                h="100%"
-                variant="filled"
-                placeholder="Title"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                disabled={loading}
-              />
-              <Button
-                type="submit"
-                isLoading={loading}
-                loadingText="Adding"
-                color={"white"}
-                h="100%"
-                className="absolute top-0 right-0"
-              >
-                Blow Me!{" "}
-              </Button>{" "}
-            </HStack>{" "}
-          </form>
-        </div>
-      </Center>
+          {loading ? "Adding..." : "Submit"}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
       <Footer/>
     </div>
   );
