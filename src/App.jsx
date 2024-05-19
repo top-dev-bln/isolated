@@ -5,7 +5,8 @@ import NotFound from "./pages/404.jsx";
 import Upload from "./pages/Upload.jsx";
 import Dash from "./pages/Dash.jsx";
 import Landing from "./pages/LandingPage.jsx";
-import Sign from "./pages/Sign.jsx";
+import Docs from "./pages/Docs.jsx";
+
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/my-pages/:id" element={<Dash />} />
           <Route path="/create" element={<Create />} />
           <Route path="/p/:id" element={<Upload />} />
+          <Route path="/docs" element={<Docs />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

@@ -81,12 +81,13 @@ export default function AddTask() {
             justifyContent={"center"}
             alignItems={"center"}
             marginBottom="10"
+            color="white"
           >
             Create Upload Page
           </Text>
           <form onSubmit={handleSubmit}>
-            <Text fontSize="xl">Page title</Text>
-            <HStack my="4" h="45">
+            <Text fontSize="xl" color="white">Page title</Text>
+            <HStack my="4" h="45" className="relative">
               <Input
                 h="100%"
                 variant="filled"
@@ -99,8 +100,9 @@ export default function AddTask() {
                 type="submit"
                 isLoading={loading}
                 loadingText="Adding"
-                colorScheme="teal"
+                color={"white"}
                 h="100%"
+                className="absolute top-0 right-0"
               >
                 Blow Me!{" "}
               </Button>{" "}

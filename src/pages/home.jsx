@@ -1,11 +1,10 @@
-import "../App.css";
-import { LoginWithGoogle, tokenPOST } from "../server.js";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { Heading, VStack, Button } from "@chakra-ui/react";
+import { Heading, VStack, Button, Avatar, Center } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import logo from "../assets/bruv.svg";
+import Footer from "../components/Footer.jsx";
 import PageList from "../components/PageList.jsx";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -14,14 +13,11 @@ const supaClient = createClient(supabaseUrl, supabaseAnonKey);
 
 function App() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState("");
-
   const [token, setToken] = useState("");
 
   async function checkUserOnStart() {
     await supaClient.auth.onAuthStateChange((event, session) => {
-      setIsAuthenticated(!!session);
       if (!session) {
         setTimeout(() => {
           navigate("/");
@@ -30,18 +26,7 @@ function App() {
 
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-
         setToken(session.access_token);
-        if (
-          event === "INITIAL_SESSION" &&
-          session.provider_refresh_token !== undefined
-        ) {
-          tokenPOST(
-            session.user.id,
-            session.access_token,
-            session.provider_refresh_token
-          );
-        }
       }
     });
   }
@@ -52,58 +37,52 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        {" "}
-        {isAuthenticated ? (
-          <div>
-            <div className="header-container">
-              <button
-                className="sign-out-button"
-                onClick={() => supaClient.auth.signOut()}
-              >
-                <img className="avatar" src={avatarUrl} alt="User Avatar" />
-                Sign Out{" "}
-              </button>{" "}
-            </div>{" "}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: "100vh",
-              }}
+      <nav className="bg-gray-800 rounded-lg p-4">
+        
+      <div className='flex justify-between items-center text-white'>
+        <a className="flex items-center text-3xl font-bold text-white" href="/my-pages">
+          <img className='w-7 h-7 mr-3' src={logo} alt="logo" />Uploadify
+        </a>
+        <ul className="flex">
+          <li className='p-4'>
+            <button className="nav-btn" onClick={() => navigate("/")}>Home</button>
+          </li>
+          
+          <li className='p-4'>
+          <button 
+              onClick={() => supaClient.auth.signOut()} 
+              className="flex items-center rounded-lg"
             >
-              <VStack p={4}>
-                <Heading
-                  mt="20"
-                  p="5"
-                  fontWeight="extrabold"
-                  size="2xl"
-                  bgColor={"#000000"}
-                  bgClip="text"
-                >
-                  Suck{" "}
-                </Heading>{" "}
-                <PageList token={token} />{" "}
-                <Link to="/create">
-                  <Button w="100%" px={"200px"}>
-                    Create{" "}
-                  </Button>{" "}
-                </Link>{" "}
-              </VStack>{" "}
-            </div>{" "}
-          </div>
-        ) : (
-          <div>
-            <button onClick={() => LoginWithGoogle()}>
-              {" "}
-              Sign In with Google{" "}
-            </button>{" "}
-          </div>
-        )}{" "}
-      </div>{" "}
-    </div>
-  );
+              <Avatar className ="rounded-full" src={avatarUrl} name="User Avatar" boxSize="40px"  />
+              <p className="ml-2 text-white">Sign Out</p>
+            </button>
+          </li>
+        </ul>
+      </div>
+            
+          
+      </nav>
+  
+    <Center h="60vh">
+      {
+        <VStack spacing={8} color="white">
+          
+          <Heading as="h1" size="2xl" fontWeight="extrabold" color="white">
+            Your Pages
+          </Heading>
+          <PageList token={token} />
+          <Link to="/create">
+            <Button colorScheme="blue">Create New Page</Button>
+          </Link>
+        </VStack>
+      }
+      </Center>
+      <Footer />
+      
+  </div>
+);
+
+
 }
 
 export default App;
