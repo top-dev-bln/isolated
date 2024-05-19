@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { Heading, VStack, Button, Avatar, Center } from "@chakra-ui/react";
+import { VStack, Button, Avatar, Center } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/bruv.svg";
@@ -67,9 +67,7 @@ function App() {
       {
         <VStack spacing={8} color="white">
           
-          <Heading as="h1" size="2xl" fontWeight="extrabold" color="white">
-            Your Pages
-          </Heading>
+          <h1  className="text-7xl font-bold mb-[100px]">My Pages</h1>
           <PageList token={token} />
           <Link to="/create">
             <Button colorScheme="blue">Create New Page</Button>
