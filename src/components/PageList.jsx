@@ -84,7 +84,7 @@ export default function PageList(token) {
           </HStack>
         ))}{" "}
         </VStack>{" "}
-        </ChakraProvider>{" "}
+         </ChakraProvider>{" "}
     </>
   );
 }
