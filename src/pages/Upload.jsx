@@ -84,11 +84,18 @@ export default function Upload() {
 
   useEffect(() => {
     const fetchAndSetinfo = async () => {
-      const response = await page_info(id);
-      const data = await response.json();
-      setTitle(data.name);
+      try {
+        const response = await page_info(id);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setTitle(data.name);
+      } catch (error) {
+        console.error('Error fetching page info:', error);
+      }
     };
-
+  
     fetchAndSetinfo();
   }, []);
 
@@ -103,7 +110,7 @@ export default function Upload() {
         flexDirection: "column",
       }}
     >
-      <h1 className="text-white text-7xl mb-3"> Upload </h1> <p style={{ marginTop: "1rem" }}> {title} </p>{" "}
+      <h1 className="text-white text-7xl mb-3"> Upload </h1> <p className="text-white text-3xl mb-3" style={{ marginTop: "1rem" }}> {title} </p>{" "}
       <div
         onDrop={handleDrop}
         onDragOver={(event) => event.preventDefault()}

@@ -24,7 +24,7 @@ const Footer = () => {
     <div className='max-w-[1240px] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300'>
       <div>
         <h1 className='w-full text-3xl font-bold text-[#258EA6]'>Uploadify</h1>
-        <p className='py-4'>As a solo developer, I'm dedicated to delivering the finest file sharing service. Every feature, every line of code, is my personal commitment to excellence. Your trust drives me forward, and I'm grateful for your support on this journey.</p>
+        <p className='py-4'>As a solo developer, Im dedicated to delivering the finest file sharing service. Every feature, every line of code, is my personal commitment to excellence. Your trust drives me forward, and Im grateful for your support on this journey.</p>
       </div>
       <div className='lg:col-span-2 flex justify-between mt-6'>
         <div>

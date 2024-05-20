@@ -60,10 +60,10 @@ function Dash() {
           navigate("/");
         }, 100);
       }
-
+  
       if (session) {
         setAvatarUrl(session.user.user_metadata.avatar_url);
-
+  
         setToken(session.access_token);
         if (
           event === "INITIAL_SESSION" &&
@@ -77,15 +77,23 @@ function Dash() {
         }
       }
     });
-
-    const response = await page_info(id);
-    const data = await response.json();
-    setTitle(data.name);
+  
+    try {
+      const response = await page_info(id);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setTitle(data.name);
+    } catch (error) {
+      console.error('Error fetching page info:', error);
+    }
   }
-
+  
   useEffect(() => {
     checkUserOnStart();
   }, []);
+  
 
   const textToCopy = window.location.origin + "/p/" + id;
   const [buttonText, setButtonText] = useState("Copy");
