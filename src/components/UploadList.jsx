@@ -115,14 +115,15 @@ export default function UploadList({ token, id }) {
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         {overlay}
         <ModalContent>
-          <ModalHeader>{selectedPage?.name}</ModalHeader>
+          <ModalHeader  textColor={"brand.jet"}>{selectedPage?.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Files:</Text>
+            <Text  textColor={"brand.jet"}>Files:</Text>
             <VStack
               divider={<StackDivider />}
               borderColor="gray.100"
-              borderWidth="2px"
+                borderWidth="2px"
+                textColor={"brand.jet"}
               p="5"
               borderRadius="lg"
               w="100%"

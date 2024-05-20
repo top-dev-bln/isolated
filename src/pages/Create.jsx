@@ -112,7 +112,7 @@ export default function AddTask() {
         <button
           type="submit"
           disabled={loading}
-          className={`bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-r-lg transition-colors duration-300 ${loading ? "cursor-not-allowed" : ""}`}
+          className={`bg-[#258EA6] hover:bg-[#659AA6] text-white font-bold py-3 px-6 rounded-r-lg transition-colors duration-300 ${loading ? "cursor-not-allowed" : ""}`}
         >
           {loading ? "Adding..." : "Submit"}
         </button>

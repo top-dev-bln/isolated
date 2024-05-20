@@ -8,10 +8,12 @@ import {
 } from "../server.js";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { Heading, VStack, Button } from "@chakra-ui/react";
+import { VStack, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import UploadList from "../components/UploadList.jsx";
+import Footer from "../components/Footer.jsx";
+import logo from "../assets/bruv.svg";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -110,38 +112,52 @@ function Dash() {
 
     
     <div>
-      <div>
-        {" "}
+      <div className="h-screen bg-gradient-to-r from-blue-500 to-teal-500">
+          {" "}
+          <nav className="bg-gray-800 rounded-lg p-4">
+        
+        <div className='flex justify-between items-center text-white'>
+          <a className="flex items-center text-3xl font-bold text-white" href="/my-pages">
+            <img className='w-7 h-7 mr-3' src={logo} alt="logo" />Uploadify
+          </a>
+          <ul className="flex ">
+            <li className='p-4'>
+              <button className="nav-btn" onClick={() => navigate("/")}>Home</button>
+            </li>
+            
+            <li className='p-4'>
+            <button 
+                onClick={() => supaClient.auth.signOut()} 
+                className="flex items-center rounded-lg nav-btn"
+              >
+                <img className ="rounded-full flex items-center object-scale-down h-6" src={avatarUrl} name="User Avatar" />
+                <p className="ml-2 text-white">Sign Out</p>
+              </button>
+            </li>
+          </ul>
+        </div>
+              
+            
+        </nav>
         {isAuthenticated ? (
           <div>
             <div className="header-container">
-              <button
-                className="sign-out-button"
-                onClick={() => supaClient.auth.signOut()}
-              >
-                <img className="avatar" src={avatarUrl} alt="User Avatar" />
-                Sign Out{" "}
-              </button>{" "}
+              
             </div>{" "}
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                minHeight: "100vh",
+                minHeight: "55vh",
               }}
             >
               <VStack p={4}>
-                <Heading
-                  mt="20"
-                  p="5"
-                  fontWeight="extrabold"
-                  size="2xl"
-                  bgColor={"#000000"}
-                  bgClip="text"
+                <h1 className="text-7xl text-white p-5 font-bold mb-4"
+                  
                 >
                   Dash
-                </Heading>{" "}
+                </h1>{" "}
                 <p>{title}</p>
                 <UploadList token={token} id={id} />{" "}
                 <div className="dash-btns">
@@ -165,6 +181,7 @@ function Dash() {
         )}{" "}
       </div>{" "}
       </div>
+      <Footer />
       </ChakraProvider>
     
   );

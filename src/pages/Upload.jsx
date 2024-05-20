@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Button, HStack, Input, useToast, Text } from "@chakra-ui/react";
+import { Button, HStack, useToast, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { upload_file, page_info } from "../server.js";
+import Footer from "../components/Footer.jsx";
 
 export default function Upload() {
   const { id } = useParams();
@@ -92,7 +93,8 @@ export default function Upload() {
   }, []);
 
   return (
-    <div
+    <div>
+    <div className="App h-screen bg-gradient-to-r from-blue-500 to-teal-500"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -101,7 +103,7 @@ export default function Upload() {
         flexDirection: "column",
       }}
     >
-      <h1> Upload </h1> <p style={{ marginTop: "1rem" }}> {title} </p>{" "}
+      <h1 className="text-white text-7xl mb-3"> Upload </h1> <p style={{ marginTop: "1rem" }}> {title} </p>{" "}
       <div
         onDrop={handleDrop}
         onDragOver={(event) => event.preventDefault()}
@@ -114,12 +116,12 @@ export default function Upload() {
           justifyContent: "center",
           alignItems: "center",
           marginTop: "1rem",
-          border: "1px solid black",
+          border: "1px solid white",
           cursor: "pointer",
         }}
         onClick={handleFileInputClick}
       >
-        <div> Click or drop files here </div>{" "}
+        <div className="text-white"> Click or drop files here </div>{" "}
         <input
           type="file"
           ref={fileInputRef}
@@ -140,36 +142,43 @@ export default function Upload() {
             }}
           >
             <HStack>
-              <Text>{file.name}</Text>{" "}
-              <Button onClick={() => removeFile(index)} ml={2}>
+              <Text className="text-white  mt-3 mb-3">{file.name}</Text>{" "}
+              <Button className="text-white" onClick={() => removeFile(index)} ml={2}>
                 X
               </Button>{" "}
             </HStack>
           </li>
         ))}{" "}
       </ul>{" "}
-      <form onSubmit={handleSubmit}>
-        <Text fontSize="xl">Name</Text>
-        <HStack my="4" h="45">
-          <Input
-            h="100%"
-            variant="filled"
-            placeholder="name"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            disabled={loading}
-          />
-          <Button
-            type="submit"
-            isLoading={loading}
-            loadingText="Adding"
-            colorScheme="teal"
-            h="100%"
-          >
-            Blow Me!{" "}
-          </Button>{" "}
-        </HStack>{" "}
+      
+
+
+
+
+
+      <form onSubmit={handleSubmit} className="w-full max-w-lg">
+      <label className="block text-2xl text-white mb-4">Enter your name</label>
+      <div className="flex items-center mb-6">
+        <input
+          type="text"
+          placeholder="your name"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          disabled={loading}
+          className="w-full p-3 rounded-l-lg text-gray-800 focus:outline-none focus:shadow-outline"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className={`bg-[#258EA6] hover:bg-[#659AA6] text-white font-bold py-3 px-6 rounded-r-lg transition-colors duration-300 ${loading ? "cursor-not-allowed" : ""}`}
+        >
+          {loading ? "Adding..." : "Submit"}
+        </button>
+      </div>
       </form>
+      
+    </div>
+    <Footer />
     </div>
   );
 }
