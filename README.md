@@ -33,9 +33,3 @@ Uploadify este o aplicație SaaS de partajare securizată a fișierelor. Aplica�
 - Credentialele de autentificare și cheile API sunt gestionate în fișiere `.env`.
 - Fişierele sunt șterse automat de pe server după descărcare, pentru a reduce riscul de acces neautorizat.
 
-## 📄 Configurare proiect
-
-1. Clonează repository-ul:
-   ```bash
-   git clone https://github.com/utilizator/uploadify.git
-   cd uploadify
